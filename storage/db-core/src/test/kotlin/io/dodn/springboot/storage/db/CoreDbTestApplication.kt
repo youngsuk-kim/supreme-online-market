@@ -1,4 +1,4 @@
-package io.dodn.springboot.storage.db
+package io.soboro.supreme.storage.db
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan

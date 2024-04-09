@@ -1,6 +1,6 @@
 package io.soboro.supreme.api.config
 
-import io.dodn.springboot.core.api.support.error.CoreApiException
+import io.soboro.supreme.core.api.support.error.CoreApiException
 import org.slf4j.LoggerFactory
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler
 import org.springframework.boot.logging.LogLevel

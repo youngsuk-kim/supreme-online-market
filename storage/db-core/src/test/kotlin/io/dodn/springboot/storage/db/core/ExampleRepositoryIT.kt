@@ -1,6 +1,6 @@
-package io.dodn.springboot.storage.db.core
+package io.soboro.supreme.storage.db.core
 
-import io.dodn.springboot.storage.db.CoreDbContextTest
+import io.soboro.supreme.storage.db.CoreDbContextTest
 import io.soboro.supreme.storage.db.core.ExampleEntity
 import io.soboro.supreme.storage.db.core.ExampleRepository
 import org.assertj.core.api.Assertions.assertThat

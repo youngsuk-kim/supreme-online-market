@@ -1,4 +1,4 @@
-package io.dodn.springboot
+package io.soboro.supreme
 
 import org.junit.jupiter.api.Test
 

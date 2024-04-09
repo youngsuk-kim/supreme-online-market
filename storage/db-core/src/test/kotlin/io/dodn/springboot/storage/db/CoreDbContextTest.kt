@@ -1,4 +1,4 @@
-package io.dodn.springboot.storage.db
+package io.soboro.supreme.storage.db
 
 import org.junit.jupiter.api.Tag
 import org.springframework.boot.test.context.SpringBootTest

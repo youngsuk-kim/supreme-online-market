@@ -1,6 +1,6 @@
 package io.soboro.supreme.api.controller.v1.request
 
-import io.dodn.springboot.core.api.domain.ExampleData
+import io.soboro.supreme.core.api.domain.ExampleData
 
 data class ExampleRequestDto(
     val data: String,

@@ -1,11 +1,11 @@
-package io.dodn.springboot.core.api.controller.v1
+package io.soboro.supreme.core.api.controller.v1
 
-import io.dodn.springboot.core.api.controller.v1.request.ExampleRequestDto
+import io.soboro.supreme.core.api.controller.v1.request.ExampleRequestDto
 import io.soboro.supreme.api.domain.ExampleResult
-import io.dodn.springboot.core.api.domain.ExampleService
-import io.dodn.springboot.test.api.RestDocsTest
-import io.dodn.springboot.test.api.RestDocsUtils.requestPreprocessor
-import io.dodn.springboot.test.api.RestDocsUtils.responsePreprocessor
+import io.soboro.supreme.core.api.domain.ExampleService
+import io.soboro.supreme.test.api.RestDocsTest
+import io.soboro.supreme.test.api.RestDocsUtils.requestPreprocessor
+import io.soboro.supreme.test.api.RestDocsUtils.responsePreprocessor
 import io.mockk.every
 import io.mockk.mockk
 import io.restassured.http.ContentType

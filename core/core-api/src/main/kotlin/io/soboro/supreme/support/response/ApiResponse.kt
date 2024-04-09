@@ -1,7 +1,7 @@
 package io.soboro.supreme.api.support.response
 
 import io.soboro.supreme.api.support.error.ErrorMessage
-import io.dodn.springboot.core.api.support.error.ErrorType
+import io.soboro.supreme.core.api.support.error.ErrorType
 
 data class ApiResponse<T> private constructor(
     val result: ResultType,

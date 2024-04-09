@@ -1,7 +1,7 @@
-package io.dodn.springboot.client.example
+package io.soboro.supreme.client.example
 
 import feign.RetryableException
-import io.dodn.springboot.client.ClientExampleContextTest
+import io.soboro.supreme.client.ClientExampleContextTest
 import io.soboro.supreme.client.example.ExampleClient
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test

@@ -1,4 +1,4 @@
-package io.dodn.springboot.client
+package io.soboro.supreme.client
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
