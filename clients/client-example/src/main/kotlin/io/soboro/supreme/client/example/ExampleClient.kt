@@ -1,5 +1,8 @@
 package io.soboro.supreme.client.example
 
+import io.soboro.supreme.client.ExampleApi
+import io.soboro.supreme.client.ExampleClientResult
+import io.soboro.supreme.client.model.ExampleRequestDto
 import org.springframework.stereotype.Component
 
 @Component
