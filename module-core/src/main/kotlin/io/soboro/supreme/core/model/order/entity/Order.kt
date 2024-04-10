@@ -4,7 +4,7 @@ import io.soboro.supreme.core.model.BaseEntity
 import io.soboro.supreme.core.model.order.enums.OrderStatus
 import jakarta.persistence.*
 
-@Entity
+@Entity @Table(name = "orders")
 class Order(
     @Column(nullable = false) val accountId: Long,
     @Enumerated(EnumType.STRING) var status: OrderStatus,

@@ -3,4 +3,4 @@ spring.application.name: db-test
 spring:
   config:
     import:
-      - db-core.yml
+      - db.yml
