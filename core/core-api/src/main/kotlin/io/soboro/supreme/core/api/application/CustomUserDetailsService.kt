@@ -2,7 +2,7 @@
 
 package io.soboro.supreme.core.api.application
 
-import io.soboro.supreme.core.api.domain.user.repsository.UserRepository
+import io.soboro.supreme.storage.db.core.entity.user.repsository.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

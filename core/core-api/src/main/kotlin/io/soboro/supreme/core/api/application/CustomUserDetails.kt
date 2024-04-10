@@ -1,9 +1,11 @@
 package io.soboro.supreme.core.api.application
 
-import io.soboro.supreme.core.api.domain.user.entity.UserSecret
+import io.soboro.supreme.storage.db.core.entity.user.entity.UserSecret
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.stereotype.Component
 
+@Component
 class CustomUserDetails(
     private val userSecret: UserSecret,
 ) : UserDetails {

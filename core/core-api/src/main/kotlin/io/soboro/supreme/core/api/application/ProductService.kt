@@ -1,8 +1,8 @@
 package io.soboro.supreme.core.api.application
 
-import io.soboro.supreme.core.api.domain.product.entity.Product
-import io.soboro.supreme.core.api.domain.product.enums.ProductType
-import io.soboro.supreme.core.api.domain.product.repsository.ProductRepository
+import io.soboro.supreme.storage.db.core.entity.product.entity.Product
+import io.soboro.supreme.storage.db.core.entity.product.enums.ProductType
+import io.soboro.supreme.storage.db.core.entity.product.repsository.ProductRepository
 
 class ProductService(
     private val productRepository: ProductRepository,
