@@ -1,12 +1,13 @@
 rootProject.name = "supreme-online-store"
 
 include(
-	"core:core-enum",
-	"core:core-api",
-	"storage:db-core",
-	"support:logging",
-	"support:monitoring",
-	"clients:client-example"
+	"module-presentation:enums",
+	"module-presentation:rest",
+	"module-persistence:rdbms",
+	"module-support:logging",
+	"module-support:monitoring",
+	"module-clients:example",
+	"module-core"
 )
 
 pluginManagement {
