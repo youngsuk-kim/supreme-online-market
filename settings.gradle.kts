@@ -6,7 +6,6 @@ include(
 	"module-persistence:rdbms",
 	"module-support:logging",
 	"module-support:monitoring",
-	"module-clients:example",
 	"module-core"
 )
 

@@ -24,5 +24,7 @@ class User(
         }
     }
 
+    fun password() = this.userSecret.password.toString()
+
     fun editPersonalInfo(newAddress: Address) = this.address.updateTo(newAddress)
 }
