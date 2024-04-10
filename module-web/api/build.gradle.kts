@@ -8,7 +8,6 @@ tasks.getByName("jar") {
 
 dependencies {
 
-    implementation(project(":module-presentation:enums"))
     implementation(project(":module-support:monitoring"))
     implementation(project(":module-support:logging"))
     implementation(project(":module-persistence:rdbms"))

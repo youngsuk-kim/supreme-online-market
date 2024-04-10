@@ -1,7 +1,6 @@
 rootProject.name = "supreme-online-store"
 
 include(
-	"module-presentation:enums",
 	"module-web:api",
 	"module-persistence:rdbms",
 	"module-support:logging",
