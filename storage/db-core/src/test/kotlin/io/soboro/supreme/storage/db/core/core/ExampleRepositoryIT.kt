@@ -1,8 +1,5 @@
 package io.soboro.supreme.storage.db.core
 
-import io.soboro.supreme.storage.db.core.CoreDbContextTest
-import io.soboro.supreme.storage.db.core.ExampleEntity
-import io.soboro.supreme.storage.db.core.ExampleRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
