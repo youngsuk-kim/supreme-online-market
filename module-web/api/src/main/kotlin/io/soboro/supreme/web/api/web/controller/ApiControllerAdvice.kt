@@ -33,6 +33,6 @@ class ApiControllerAdvice {
     @ExceptionHandler(IllegalArgumentException::class)
     fun handleNotFoundException(e: IllegalArgumentException): ResponseEntity<ApiResponse<Any>> {
         log.error("Exception : {}", e.message, e)
-        return ResponseEntity(ApiResponse.error(ErrorType.NOT_FOUND_ERROR), ErrorType.NOT_FOUND_ERROR.status)
+        return ResponseEntity(ApiResponse.error(ErrorType.INVALID_ARG_ERROR), ErrorType.INVALID_ARG_ERROR.status)
     }
 }

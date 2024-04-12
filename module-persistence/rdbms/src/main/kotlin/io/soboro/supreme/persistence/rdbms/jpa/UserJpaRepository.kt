@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 interface UserJpaRepository : JpaRepository<User, Long> {
-    fun findByUserSecretEmail(email: Email): User?
+    fun existsByUserSecretEmail(email: Email): Boolean
     fun findByUsername(username: String): User?
 }
 
@@ -19,8 +19,8 @@ class UserRepositoryAdapter(
         return userJpaRepository.findByUsername(username)
     }
 
-    override fun findByEmail(email: Email): User? {
-        return userJpaRepository.findByUserSecretEmail(email)
+    override fun existsByEmail(email: Email): Boolean {
+        return userJpaRepository.existsByUserSecretEmail(email)
     }
 
     override fun save(user: User) {

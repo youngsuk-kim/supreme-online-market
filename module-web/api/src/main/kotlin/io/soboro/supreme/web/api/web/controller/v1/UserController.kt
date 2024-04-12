@@ -14,9 +14,9 @@ class UserController(
 ) {
 
     @PostMapping("/api/v1/register")
-    fun register(@RequestBody request: UserRegisterRequest): ResponseEntity<ApiResponse<Void>> {
+    fun register(@RequestBody request: UserRegisterRequest): ResponseEntity<ApiResponse<Any>> {
         userRegisterService.register(request.toUserRegister())
 
-        return ResponseEntity.ok().build()
+        return ResponseEntity.ok(ApiResponse.success())
     }
 }

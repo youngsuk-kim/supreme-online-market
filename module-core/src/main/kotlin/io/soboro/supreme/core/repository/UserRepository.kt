@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository {
     fun findByUsername(username: String): User?
-    fun findByEmail(email: Email): User?
+    fun existsByEmail(email: Email): Boolean
     fun save(user: User)
 }

@@ -48,7 +48,6 @@ class AuthenticationFilter(
     }
 
     override fun shouldNotFilter(request: HttpServletRequest): Boolean {
-        println(request.servletPath)
         return SecurityConfiguration.allowedUrls.any { AntPathMatcher().match(it, request.servletPath) }
     }
 }
