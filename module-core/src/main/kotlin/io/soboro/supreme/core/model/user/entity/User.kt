@@ -2,6 +2,7 @@ package io.soboro.supreme.core.model.user.entity
 
 import io.soboro.supreme.core.model.BaseEntity
 import io.soboro.supreme.core.model.order.vo.Address
+import io.soboro.supreme.core.service.PasswordEncoder
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Embedded
@@ -30,9 +31,13 @@ class User(
         }
     }
 
+    fun encodePassword(passwordEncoder: PasswordEncoder) {
+        this.userSecret.encode(passwordEncoder)
+    }
+
     fun email() = this.userSecret.email
 
-    fun password() = this.userSecret.password.toString()
+    fun password() = this.userSecret.password
 
     fun editPersonalInfo(newAddress: Address) = this.address.updateTo(newAddress)
 }

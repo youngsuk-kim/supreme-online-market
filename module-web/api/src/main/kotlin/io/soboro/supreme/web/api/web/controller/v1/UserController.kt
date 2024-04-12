@@ -21,7 +21,7 @@ class UserController(
 
     @PostMapping("/api/v1/register")
     fun register(@RequestBody request: UserRegisterRequest): ResponseEntity<ApiResponse<Any>> {
-        registerService.register(request.toRegisterUser())
+        registerService.register(request.toUser(), request.checkPassword)
 
         return ResponseEntity.ok(ApiResponse.success())
     }

@@ -1,6 +1,11 @@
 package io.soboro.supreme.web.api.web.controller.v1.request
 
-import io.soboro.supreme.core.service.RegisterUser
+import io.soboro.supreme.core.model.order.vo.Address
+import io.soboro.supreme.core.model.user.entity.User
+import io.soboro.supreme.core.model.user.entity.UserSecret
+import io.soboro.supreme.core.model.user.vo.Email
+import io.soboro.supreme.core.model.user.vo.Password
+import io.soboro.supreme.core.model.user.vo.PhoneNumber
 
 data class UserRegisterRequest(
     val email: String,
@@ -12,16 +17,15 @@ data class UserRegisterRequest(
     val province: String,
     val detail: String,
 ) {
-    fun toRegisterUser(): RegisterUser {
-        return RegisterUser(
-            email = email,
-            password = password,
-            city = city,
-            province = province,
-            detail = detail,
-            checkPassword = checkPassword,
-            phoneNumber = phoneNumber,
-            username = username,
+    fun toUser(): User {
+        return User.create(
+            username = this.username,
+            address = Address(this.city, this.province, this.detail),
+            userSecret = UserSecret(
+                Email(this.email),
+                PhoneNumber(this.phoneNumber),
+                Password(this.password)
+            ),
         )
     }
 }

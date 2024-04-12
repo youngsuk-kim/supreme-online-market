@@ -16,6 +16,6 @@ class CustomUserDetailsService(
                 ?: throw UsernameNotFoundException("User with username $username not found")
             )
 
-        return CustomUserDetails(user.username, user.password())
+        return CustomUserDetails(user.username, user.password().toString())
     }
 }

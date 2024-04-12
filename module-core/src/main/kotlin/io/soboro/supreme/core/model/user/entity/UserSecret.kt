@@ -4,6 +4,7 @@ import io.soboro.supreme.core.model.BaseEntity
 import io.soboro.supreme.core.model.user.vo.Email
 import io.soboro.supreme.core.model.user.vo.Password
 import io.soboro.supreme.core.model.user.vo.PhoneNumber
+import io.soboro.supreme.core.service.PasswordEncoder
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 
@@ -11,5 +12,10 @@ import jakarta.persistence.Entity
 class UserSecret(
     @Column(nullable = false, unique = true) val email: Email,
     @Column(nullable = false, unique = true) val phoneNumber: PhoneNumber,
-    @Column(nullable = false) val password: Password,
-) : BaseEntity()
+    @Column(nullable = false) var password: Password,
+) : BaseEntity() {
+    fun encode(passwordEncoder: PasswordEncoder) {
+        this.password = Password(passwordEncoder.encode(this.password.toString()))
+    }
+}
+

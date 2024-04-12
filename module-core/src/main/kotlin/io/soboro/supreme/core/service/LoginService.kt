@@ -22,6 +22,6 @@ class LoginService(
     }
 
     fun User.checkPasswordOk(password: String): Boolean {
-        return passwordEncoder.matches(password, this.password())
+        return passwordEncoder.matches(password, this.password().toString())
     }
 }
