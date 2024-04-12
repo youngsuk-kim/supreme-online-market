@@ -26,6 +26,7 @@ class SecurityConfiguration(
             "/health",
             "/api/v1/register",
             "/api/v1/login",
+            "/api/v1/products/**",
 
             "/h2-console/**",
             "/js/**",

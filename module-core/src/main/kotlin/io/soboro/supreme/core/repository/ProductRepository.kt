@@ -5,4 +5,9 @@ import io.soboro.supreme.core.model.product.enums.ProductType
 
 interface ProductRepository {
     fun findAll(type: ProductType): List<Product>
+    fun findById(productId: Long): Product?
+}
+
+interface CustomProductRepository {
+    fun findAll(): List<Product>
 }

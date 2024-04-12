@@ -36,5 +36,5 @@ data class Money(private val amount: BigDecimal) {
 
     fun doubleValue() = amount.toDouble()
 
-    override fun toString() = "${amount}원"
+    override fun toString() = "$amount"
 }
