@@ -13,33 +13,33 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserRegisterService(
+class RegisterService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
     @Transactional
-    fun register(userRegister: UserRegister) {
-        userRegister.checkPassword()
-        userRegister.checkDuplicate()
-        
+    fun register(registerUser: RegisterUser) {
+        registerUser.checkPassword()
+        registerUser.checkDuplicate()
+
         val user = User.create(
-            username = userRegister.username,
-            address = Address(userRegister.city, userRegister.province, userRegister.detail),
+            username = registerUser.username,
+            address = Address(registerUser.city, registerUser.province, registerUser.detail),
             userSecret = UserSecret(
-                Email(userRegister.email),
-                PhoneNumber(userRegister.phoneNumber),
-                Password(passwordEncoder.encode(userRegister.password)),
+                Email(registerUser.email),
+                PhoneNumber(registerUser.phoneNumber),
+                Password(passwordEncoder.encode(registerUser.password)),
             ),
         )
 
         userRepository.save(user)
     }
 
-    private fun UserRegister.checkDuplicate() {
+    private fun RegisterUser.checkDuplicate() {
         if (userRepository.existsByEmail(Email(this.email))) throw DuplicateEmailException()
     }
 
-    private fun UserRegister.checkPassword() {
+    private fun RegisterUser.checkPassword() {
         if (this.password != checkPassword) throw InvalidPasswordException()
     }
 }

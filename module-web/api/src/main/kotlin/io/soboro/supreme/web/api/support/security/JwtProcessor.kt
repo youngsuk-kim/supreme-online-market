@@ -23,11 +23,11 @@ class JwtProcessor(
         const val CLAIM_KEY_USERNAME = "username"
     }
 
-    fun generateToken(userDetails: CustomUserDetails): String {
+    fun generateToken(email: String, password: String): String {
         return JWT.create()
             .withExpiresAt(generateExpirationDate())
-            .withSubject(userDetails.password)
-            .withClaim(CLAIM_KEY_USERNAME, userDetails.username)
+            .withSubject(password)
+            .withClaim(CLAIM_KEY_USERNAME, email)
             .sign(Algorithm.HMAC256(secret))
     }
 

@@ -1,6 +1,6 @@
 package io.soboro.supreme.web.api.web.controller.v1.request
 
-import io.soboro.supreme.core.service.UserRegister
+import io.soboro.supreme.core.service.RegisterUser
 
 data class UserRegisterRequest(
     val email: String,
@@ -12,8 +12,8 @@ data class UserRegisterRequest(
     val province: String,
     val detail: String,
 ) {
-    fun toUserRegister(): UserRegister {
-        return UserRegister(
+    fun toRegisterUser(): RegisterUser {
+        return RegisterUser(
             email = email,
             password = password,
             city = city,

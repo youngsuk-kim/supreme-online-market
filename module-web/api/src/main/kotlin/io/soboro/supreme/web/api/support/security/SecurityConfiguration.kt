@@ -23,8 +23,9 @@ class SecurityConfiguration(
     companion object {
         val allowedUrls = arrayOf(
             "/",
-            "/api/v1/register",
             "/health",
+            "/api/v1/register",
+            "/api/v1/login",
 
             "/h2-console/**",
             "/js/**",
@@ -72,5 +73,9 @@ class SecurityConfiguration(
 
     override fun encode(plain: String): String {
         return passwordEncoder().encode(plain)
+    }
+
+    override fun matches(plain: String, encoded: String): Boolean {
+        return passwordEncoder().matches(plain, encoded)
     }
 }

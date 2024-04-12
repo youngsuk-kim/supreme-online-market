@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.service
 
-data class UserRegister(
+data class RegisterUser(
     val email: String,
     val password: String,
     val checkPassword: String,
