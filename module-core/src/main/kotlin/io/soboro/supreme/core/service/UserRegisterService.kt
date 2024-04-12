@@ -15,30 +15,31 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserRegisterService(
     private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
 ) {
     @Transactional
     fun register(userRegister: UserRegister) {
+        userRegister.checkPassword()
+        userRegister.checkDuplicate()
+        
         val user = User.create(
             username = userRegister.username,
             address = Address(userRegister.city, userRegister.province, userRegister.detail),
             userSecret = UserSecret(
                 Email(userRegister.email),
                 PhoneNumber(userRegister.phoneNumber),
-                Password(userRegister.password),
+                Password(passwordEncoder.encode(userRegister.password)),
             ),
         )
-
-        user.checkPassword(Password(userRegister.checkPassword))
-        user.checkDuplicate()
 
         userRepository.save(user)
     }
 
-    private fun User.checkDuplicate() {
-        if (userRepository.existsByEmail(this.email())) throw DuplicateEmailException()
+    private fun UserRegister.checkDuplicate() {
+        if (userRepository.existsByEmail(Email(this.email))) throw DuplicateEmailException()
     }
 
-    private fun User.checkPassword(password: Password) {
-        if (this.userSecret.password != password) throw InvalidPasswordException()
+    private fun UserRegister.checkPassword() {
+        if (this.password != checkPassword) throw InvalidPasswordException()
     }
 }
