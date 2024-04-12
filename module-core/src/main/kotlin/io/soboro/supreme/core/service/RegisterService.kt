@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class RegisterService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
 ) {
     @Transactional
     fun register(user: User, checkPassword: String) {

@@ -10,11 +10,13 @@ spring.config.activate.on-profile: local
 
 spring:
   jpa:
+    defer-datasource-initialization: true
     ddl-auto: create
     properties:
-      
+      show_log: true
       format_sql: true
-      show_sql: true
+    show-sql: true
+
   h2:
     console:
       enabled: true
@@ -35,7 +37,6 @@ spring.config.activate.on-profile: dev
 spring:
   jpa:
     properties:
-      
       show_log: true
       format_sql: true
     show-sql: true

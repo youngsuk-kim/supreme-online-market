@@ -24,7 +24,7 @@ data class UserRegisterRequest(
             userSecret = UserSecret(
                 Email(this.email),
                 PhoneNumber(this.phoneNumber),
-                Password(this.password)
+                Password(this.password),
             ),
         )
     }

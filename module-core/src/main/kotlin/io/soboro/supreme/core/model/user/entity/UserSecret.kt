@@ -18,4 +18,3 @@ class UserSecret(
         this.password = Password(passwordEncoder.encode(this.password.toString()))
     }
 }
-

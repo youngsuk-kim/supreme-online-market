@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class LoginService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
 ) {
 
     @Transactional(readOnly = true)

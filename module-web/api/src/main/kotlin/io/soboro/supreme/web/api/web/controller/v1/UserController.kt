@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val registerService: RegisterService,
     private val loginService: LoginService,
-    private val jwtProcessor: JwtProcessor
+    private val jwtProcessor: JwtProcessor,
 ) {
 
     @PostMapping("/api/v1/register")
