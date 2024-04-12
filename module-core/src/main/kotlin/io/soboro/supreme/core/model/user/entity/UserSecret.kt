@@ -4,7 +4,7 @@ import io.soboro.supreme.core.model.BaseEntity
 import io.soboro.supreme.core.model.user.vo.Email
 import io.soboro.supreme.core.model.user.vo.Password
 import io.soboro.supreme.core.model.user.vo.PhoneNumber
-import io.soboro.supreme.core.service.PasswordEncoder
+import io.soboro.supreme.core.support.PasswordEncoder
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 

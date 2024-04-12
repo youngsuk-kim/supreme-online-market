@@ -18,7 +18,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 @EnableWebSecurity
 class SecurityConfiguration(
     private val jwtAuthenticationFilter: AuthenticationFilter,
-): io.soboro.supreme.core.service.PasswordEncoder {
+): io.soboro.supreme.core.support.PasswordEncoder {
 
     companion object {
         val allowedUrls = arrayOf(

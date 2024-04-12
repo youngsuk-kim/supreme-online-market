@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.service
+package io.soboro.supreme.core.support
 
 interface PasswordEncoder {
     fun encode(plain: String): String
