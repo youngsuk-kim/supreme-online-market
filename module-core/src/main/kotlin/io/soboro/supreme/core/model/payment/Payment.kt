@@ -1,7 +1,7 @@
 package io.soboro.supreme.core.model.payment
 
-import io.soboro.supreme.core.model.BaseEntity
-import io.soboro.supreme.core.model.Money
+import io.soboro.supreme.core.model.common.BaseEntity
+import io.soboro.supreme.core.model.common.Money
 import io.soboro.supreme.core.model.order.entity.Order
 import io.soboro.supreme.core.model.payment.vo.PaymentStatus
 import jakarta.persistence.Entity

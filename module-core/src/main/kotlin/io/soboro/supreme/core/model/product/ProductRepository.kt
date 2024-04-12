@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.repository
+package io.soboro.supreme.core.model.product
 
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.enums.ProductType
@@ -8,6 +8,3 @@ interface ProductRepository {
     fun findById(productId: Long): Product?
 }
 
-interface CustomProductRepository {
-    fun findAll(): List<Product>
-}

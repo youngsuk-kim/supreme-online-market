@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.cart
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.product.entity.Product
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType

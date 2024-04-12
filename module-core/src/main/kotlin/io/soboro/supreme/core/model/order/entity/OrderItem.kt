@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.order.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType

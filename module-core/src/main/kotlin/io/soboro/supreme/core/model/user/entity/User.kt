@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.user.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.order.vo.Address
 import io.soboro.supreme.core.support.PasswordEncoder
 import jakarta.persistence.CascadeType

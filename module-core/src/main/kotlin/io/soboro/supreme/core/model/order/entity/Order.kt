@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.order.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.order.enums.OrderStatus
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column

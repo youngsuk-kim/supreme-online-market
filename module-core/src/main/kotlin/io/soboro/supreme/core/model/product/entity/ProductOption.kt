@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.product.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.product.enums.Option
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model
+package io.soboro.supreme.core.model.common
 
 import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue

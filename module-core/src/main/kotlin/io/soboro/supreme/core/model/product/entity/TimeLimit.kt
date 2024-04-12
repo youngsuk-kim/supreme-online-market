@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.product.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import jakarta.persistence.Entity
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit

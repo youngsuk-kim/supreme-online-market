@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.cart
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.OneToMany

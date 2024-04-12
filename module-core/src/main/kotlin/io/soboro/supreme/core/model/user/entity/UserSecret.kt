@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.user.entity
 
-import io.soboro.supreme.core.model.BaseEntity
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.user.vo.Email
 import io.soboro.supreme.core.model.user.vo.Password
 import io.soboro.supreme.core.model.user.vo.PhoneNumber

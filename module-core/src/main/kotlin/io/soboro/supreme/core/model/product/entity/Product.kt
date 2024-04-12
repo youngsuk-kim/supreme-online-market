@@ -1,7 +1,7 @@
 package io.soboro.supreme.core.model.product.entity
 
-import io.soboro.supreme.core.model.BaseEntity
-import io.soboro.supreme.core.model.Money
+import io.soboro.supreme.core.model.common.BaseEntity
+import io.soboro.supreme.core.model.common.Money
 import io.soboro.supreme.core.model.product.enums.ProductType
 import jakarta.persistence.Column
 import jakarta.persistence.Embedded
