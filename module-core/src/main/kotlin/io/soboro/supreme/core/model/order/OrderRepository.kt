@@ -1,3 +1,7 @@
 package io.soboro.supreme.core.model.order
 
-interface OrderRepository
+import io.soboro.supreme.core.model.order.entity.Order
+
+interface OrderRepository {
+    fun save(order: Order)
+}

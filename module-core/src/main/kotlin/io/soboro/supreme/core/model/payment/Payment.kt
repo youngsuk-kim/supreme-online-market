@@ -13,7 +13,7 @@ class Payment(
     var status: PaymentStatus,
 ) : BaseEntity() {
     fun payed(order: Order) {
-        this.accountId = order.accountId
+        this.accountId = order.userId
 //        this.totalPrice = order.totalPrice()
         this.status = PaymentStatus.DONE
     }

@@ -10,7 +10,7 @@ import jakarta.persistence.FetchType
 import jakarta.persistence.ManyToOne
 
 @Entity
-class ProductOption(
+class ProductOptionItem(
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Product::class) var product: Product,
     @Enumerated(EnumType.STRING) var option: Option,
     @Column private var name: String,

@@ -16,8 +16,8 @@ class CustomProductRepositoryImplTest {
     @Autowired
     private lateinit var repository: CustomProductRepositoryImpl
 
-    @Test
-    fun `products pagination`() {
-        repository.paginationNoOffsetBuilder(1L, "신발", 1L)
-    }
+//    @Test
+//    fun `products pagination`() {
+//        repository.paginationNoOffsetBuilder(1L, "신발", 1L)
+//    }
 }

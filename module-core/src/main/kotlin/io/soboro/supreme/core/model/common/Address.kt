@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.order.vo
+package io.soboro.supreme.core.model.common
 
 import jakarta.persistence.Embeddable
 

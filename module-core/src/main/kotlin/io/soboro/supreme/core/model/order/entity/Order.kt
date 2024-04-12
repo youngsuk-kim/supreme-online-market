@@ -13,11 +13,7 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = "orders")
 class Order(
-    @Column(nullable = false) val accountId: Long,
-    @Enumerated(EnumType.STRING) var status: OrderStatus,
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "order") val items: MutableList<OrderItem>,
-) : BaseEntity() {
-    fun pending() {
-        this.status = OrderStatus.PENDING
-    }
-}
+    @Column(nullable = false) val userId: Long,
+    @Enumerated(EnumType.STRING) var status: OrderStatus = OrderStatus.ORDERED,
+    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "order") val items: List<OrderItem>,
+) : BaseEntity()

@@ -4,7 +4,7 @@ package io.soboro.supreme.core.model.order.validator
  * 사용자가 주문 버튼 클릭시, 주문 정책에 맞는 값을
  * 올바르게 모두 입력 했는지 검증 하는 역할을 한다.
  */
-class OrderValidator {
+object OrderValidator {
     /**
      * 구매 가능한 유저 인지 검증
      */
