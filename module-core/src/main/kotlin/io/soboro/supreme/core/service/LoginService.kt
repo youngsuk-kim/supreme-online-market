@@ -15,11 +15,11 @@ class LoginService(
 ) {
 
     @Transactional(readOnly = true)
-    fun validateUser(loginUser: LoginUser) {
-        val user = userRepository.findByEmail(Email(loginUser.email))
+    fun validateUser(email: String, password: String) {
+        val user = userRepository.findByEmail(Email(email))
             ?: throw UserNotFoundException()
 
-        user.checkPasswordOk(loginUser.password)
+        user.checkPasswordOk(password)
     }
 
     fun User.checkPasswordOk(password: String): Boolean {

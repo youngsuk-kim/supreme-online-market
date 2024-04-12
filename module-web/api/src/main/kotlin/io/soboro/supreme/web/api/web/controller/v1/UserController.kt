@@ -28,7 +28,7 @@ class UserController(
 
     @PostMapping("/api/v1/login")
     fun login(@RequestBody request: UserLoginRequest): ResponseEntity<ApiResponse<UserLoginResponse>> {
-        loginService.validateUser(request.toUserLogin())
+        loginService.validateUser(request.email, request.password)
 
         val token = jwtProcessor.generateToken(request.email, request.password)
 
