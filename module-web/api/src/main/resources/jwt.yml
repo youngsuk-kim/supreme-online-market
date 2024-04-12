@@ -1,3 +1,5 @@
+# 실제 라이브 서비스 에서는 해당 파일을 노출 하면 안됨
+
 jwt:
   secret: NiOeyFbN1Gqo10bPgUyTFsRMkJpGLXSvGP04eFqj5B30r5TcrtlSXfQ7TndvYjNvfkEKLqILn0j1SmKODO1Yw3JpBBgI3nVPEahqxeY8qbPSFGyzyEVxnl4AQcrnVneI
   expiration: 3
