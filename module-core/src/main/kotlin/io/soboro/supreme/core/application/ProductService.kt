@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.service
+package io.soboro.supreme.core.application
 
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.enums.ProductType

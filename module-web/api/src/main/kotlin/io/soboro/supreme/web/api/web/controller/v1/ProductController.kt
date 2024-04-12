@@ -1,6 +1,6 @@
 package io.soboro.supreme.web.api.web.controller.v1
 
-import io.soboro.supreme.core.service.ProductService
+import io.soboro.supreme.core.application.ProductService
 import io.soboro.supreme.web.api.support.response.ApiResponse
 import io.soboro.supreme.web.api.web.controller.v1.response.ProductDetailResponse
 import org.springframework.http.ResponseEntity

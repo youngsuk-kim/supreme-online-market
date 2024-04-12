@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.service
+package io.soboro.supreme.core.application
 
 data class Products(
     val id: Long,

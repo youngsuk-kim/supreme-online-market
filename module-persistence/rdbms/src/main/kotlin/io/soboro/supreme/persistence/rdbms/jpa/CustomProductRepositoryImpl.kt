@@ -6,7 +6,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.entity.QProduct
 import io.soboro.supreme.core.model.product.CustomProductRepository
-import io.soboro.supreme.core.service.Products
+import io.soboro.supreme.core.application.Products
 import org.springframework.stereotype.Repository
 
 @Repository
