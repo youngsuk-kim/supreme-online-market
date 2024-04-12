@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails
 
 class CustomUserDetails(
     private val email: String,
-    private val password: String
-): UserDetails {
+    private val password: String,
+) : UserDetails {
 
     // Not Using
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
@@ -36,5 +36,4 @@ class CustomUserDetails(
     override fun isEnabled(): Boolean {
         return true
     }
-
 }

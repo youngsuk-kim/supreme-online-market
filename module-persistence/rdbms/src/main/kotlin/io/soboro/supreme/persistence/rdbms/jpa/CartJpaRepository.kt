@@ -9,5 +9,5 @@ interface CartJpaRepository : JpaRepository<Cart, Long>
 
 @Repository
 class CartRepositoryAdapter(
-    private val cartJpaRepository: CartJpaRepository
-): CartRepository
+    private val cartJpaRepository: CartJpaRepository,
+) : CartRepository

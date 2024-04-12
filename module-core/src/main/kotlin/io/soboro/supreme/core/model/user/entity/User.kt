@@ -4,7 +4,8 @@ import io.soboro.supreme.core.model.BaseEntity
 import io.soboro.supreme.core.model.order.vo.Address
 import jakarta.persistence.*
 
-@Entity @Table(name = "users")
+@Entity
+@Table(name = "users")
 class User(
     @Column(unique = true) val username: String,
     @Embedded var address: Address,
@@ -23,6 +24,8 @@ class User(
             )
         }
     }
+
+    fun email() = this.userSecret.email
 
     fun password() = this.userSecret.password.toString()
 

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
@@ -14,31 +14,39 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
-
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(
-    private val authenticationFilter: AuthenticationFilter,
+class SecurityConfiguration(
+    private val jwtAuthenticationFilter: AuthenticationFilter,
 ) {
+
+    companion object {
+        val allowedUrls = arrayOf(
+            "/",
+            "/api/v1/register",
+            "/health",
+
+            "/h2-console/**",
+            "/js/**",
+            "/css/**",
+            "/image/**",
+            "/fonts/**",
+            "/favicon.ico",
+        )
+    }
 
     @Bean
     fun filterChain(
         http: HttpSecurity,
     ): SecurityFilterChain {
-        http
-            .httpBasic { it.disable() }
-            .csrf { it.disable() }
-            .formLogin { it.disable() }
-            .sessionManagement { sessionManager -> sessionManager.sessionCreationPolicy(STATELESS) }
+        http.csrf { it.disable() }
+            .headers { it.frameOptions { frameOptions -> frameOptions.sameOrigin() } }
             .authorizeHttpRequests {
-                it.requestMatchers(
-                    "/health",
-                    "/api/v1/register",
-                    "/api/v1/login"
-                ).permitAll()
+                it.requestMatchers(*allowedUrls).permitAll()
                     .anyRequest().authenticated()
             }
-            .addFilterBefore(authenticationFilter, BasicAuthenticationFilter::class.java)
+            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+            .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter::class.java)
 
         return http.build()
     }
@@ -61,5 +69,4 @@ class SecurityConfig(
     fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
-
 }
