@@ -1,5 +1,5 @@
 package io.soboro.supreme.core.model.product.enums
 
-enum class Option {
+enum class OptionTitle {
     SIZE,
 }

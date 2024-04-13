@@ -1,6 +1,6 @@
 package io.soboro.supreme.core.model.order
 
-import io.soboro.supreme.core.model.product.enums.Option
+import io.soboro.supreme.core.model.product.enums.OptionTitle
 import java.math.BigDecimal
 
 data class Cart(
@@ -18,7 +18,7 @@ data class Cart(
     data class CartOptionItem(
         val orderItemId: Long,
         val optionName: String,
-        val option: Option,
+        val optionTitle: OptionTitle,
     )
 }
 

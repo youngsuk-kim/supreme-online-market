@@ -4,9 +4,11 @@ import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.product.enums.Host
 import io.soboro.supreme.core.model.product.enums.ImageType
 import jakarta.persistence.Entity
+import jakarta.persistence.Table
 
 @Entity
-class Image(
+@Table(name = "product_image")
+class ProductImage(
     val host: Host,
     val port: Int,
     val path: String,

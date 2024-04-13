@@ -5,8 +5,10 @@ import io.soboro.supreme.core.model.common.Money
 import io.soboro.supreme.core.model.order.entity.Order
 import io.soboro.supreme.core.model.payment.vo.PaymentStatus
 import jakarta.persistence.Entity
+import jakarta.persistence.Table
 
 @Entity
+@Table(name = "payments")
 class Payment(
     var accountId: Long,
     var totalPrice: Money,

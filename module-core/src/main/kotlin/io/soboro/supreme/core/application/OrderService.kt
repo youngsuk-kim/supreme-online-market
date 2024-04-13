@@ -47,7 +47,7 @@ class OrderService(
     private fun toOrderOption(cartOptionItem: Cart.CartOptionItem): OrderOption {
         return OrderOption(
             orderItemId = cartOptionItem.orderItemId,
-            option = cartOptionItem.option,
+            optionTitle = cartOptionItem.optionTitle,
             optionName = cartOptionItem.optionName,
         )
     }

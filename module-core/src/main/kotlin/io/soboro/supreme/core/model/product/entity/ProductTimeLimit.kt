@@ -2,11 +2,13 @@ package io.soboro.supreme.core.model.product.entity
 
 import io.soboro.supreme.core.model.common.BaseEntity
 import jakarta.persistence.Entity
+import jakarta.persistence.Table
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
 @Entity
-class TimeLimit(
+@Table(name = "product_time_limit")
+class ProductTimeLimit(
     var startTime: LocalDateTime,
     var endTime: LocalDateTime,
 ) : BaseEntity() {
@@ -14,8 +16,8 @@ class TimeLimit(
         fun create(
             startTime: LocalDateTime,
             endTime: LocalDateTime,
-        ): TimeLimit {
-            return TimeLimit(
+        ): ProductTimeLimit {
+            return ProductTimeLimit(
                 startTime = startTime,
                 endTime = endTime,
             )

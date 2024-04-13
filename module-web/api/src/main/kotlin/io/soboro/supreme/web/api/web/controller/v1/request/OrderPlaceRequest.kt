@@ -1,7 +1,7 @@
 package io.soboro.supreme.web.api.web.controller.v1.request
 
 import io.soboro.supreme.core.model.common.Address
-import io.soboro.supreme.core.model.product.enums.Option
+import io.soboro.supreme.core.model.product.enums.OptionTitle
 import io.soboro.supreme.core.model.shipment.Shipping
 import java.math.BigDecimal
 
@@ -28,7 +28,7 @@ data class OrderPlaceRequest(
         data class CartOptionItem(
             val orderItemId: Long,
             val optionName: String,
-            val option: Option,
+            val optionTitle: OptionTitle,
         )
     }
 
@@ -42,7 +42,7 @@ data class OrderPlaceRequest(
                 io.soboro.supreme.core.model.order.Cart.CartOptionItem(
                     orderItemId = cartOptionItem.orderItemId,
                     optionName = cartOptionItem.optionName,
-                    option = cartOptionItem.option
+                    optionTitle = cartOptionItem.optionTitle
                 )
             }
             io.soboro.supreme.core.model.order.Cart.CartOptionGroup(
