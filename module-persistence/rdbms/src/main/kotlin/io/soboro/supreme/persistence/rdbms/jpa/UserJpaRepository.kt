@@ -9,4 +9,3 @@ interface UserJpaRepository : JpaRepository<User, Long> {
     fun findByUsername(username: String): User?
     fun findByUserSecretEmail(email: Email): User?
 }
-

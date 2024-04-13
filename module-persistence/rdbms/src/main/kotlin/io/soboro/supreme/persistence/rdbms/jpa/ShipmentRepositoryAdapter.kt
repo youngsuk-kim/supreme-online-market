@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class ShipmentRepositoryAdapter(
-    private val shipmentJpaRepository: ShipmentJpaRepository
-): ShipmentRepository {
+    private val shipmentJpaRepository: ShipmentJpaRepository,
+) : ShipmentRepository {
     override fun save(shipment: Shipment) {
         shipmentJpaRepository.save(shipment)
     }

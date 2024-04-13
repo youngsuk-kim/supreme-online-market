@@ -43,19 +43,19 @@ data class OrderPlaceRequest(
                 io.soboro.supreme.core.model.order.vo.Cart.CartOptionItem(
                     orderItemId = cartOptionItem.orderItemId,
                     optionName = cartOptionItem.optionName,
-                    optionTitle = cartOptionItem.optionTitle
+                    optionTitle = cartOptionItem.optionTitle,
                 )
             }
             io.soboro.supreme.core.model.order.vo.Cart.CartOptionGroup(
                 options = options,
                 productName = cartOptionGroup.productName,
                 count = cartOptionGroup.count,
-                price = cartOptionGroup.price
+                price = cartOptionGroup.price,
             )
         }
         return Cart(
             userId = cart.userId,
-            cartOptionGroups = cartOptionGroups
+            cartOptionGroups = cartOptionGroups,
         )
     }
 }

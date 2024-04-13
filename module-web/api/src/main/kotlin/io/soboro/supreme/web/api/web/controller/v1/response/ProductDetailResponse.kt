@@ -6,7 +6,7 @@ data class ProductDetailResponse(
     val id: Long,
     val name: String,
     val description: String,
-    val price: String
+    val price: String,
 ) {
     companion object {
         // FIXME

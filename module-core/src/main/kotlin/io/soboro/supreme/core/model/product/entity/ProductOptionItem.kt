@@ -15,5 +15,5 @@ import jakarta.persistence.Table
 class ProductOptionItem(
     @ManyToOne(fetch = FetchType.LAZY) val productOptionGroup: ProductOptionGroup,
     @Column(nullable = false) var optionName: String,
-    @Enumerated(EnumType.STRING) var optionTitle: OptionTitle
-): BaseEntity()
+    @Enumerated(EnumType.STRING) var optionTitle: OptionTitle,
+) : BaseEntity()

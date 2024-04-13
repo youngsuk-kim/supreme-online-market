@@ -1,11 +1,11 @@
 package io.soboro.supreme.core.application
 
-import io.soboro.supreme.core.model.order.vo.Cart
-import io.soboro.supreme.core.model.order.repository.OrderItemRepository
-import io.soboro.supreme.core.model.order.repository.OrderRepository
 import io.soboro.supreme.core.model.order.entity.Order
 import io.soboro.supreme.core.model.order.entity.OrderItem
 import io.soboro.supreme.core.model.order.entity.OrderOption
+import io.soboro.supreme.core.model.order.repository.OrderItemRepository
+import io.soboro.supreme.core.model.order.repository.OrderRepository
+import io.soboro.supreme.core.model.order.vo.Cart
 import io.soboro.supreme.core.model.shipment.entity.Shipment
 import io.soboro.supreme.core.model.shipment.repository.ShipmentRepository
 import io.soboro.supreme.core.model.shipment.vo.Shipping
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 class OrderService(
     private val orderRepository: OrderRepository,
     private val orderItemRepository: OrderItemRepository,
-    private val shipmentRepository: ShipmentRepository
+    private val shipmentRepository: ShipmentRepository,
 ) {
 
     @Transactional
@@ -40,7 +40,7 @@ class OrderService(
             order = order,
             productName = cartOptionGroups.productName,
             productCount = cartOptionGroups.count,
-            orderOption = cartOptionGroups.options.map { toOrderOption(it) }
+            orderOption = cartOptionGroups.options.map { toOrderOption(it) },
         )
     }
 

@@ -1,7 +1,7 @@
 package io.soboro.supreme.core.model.user.entity
 
-import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.common.Address
+import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.support.PasswordEncoder
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column

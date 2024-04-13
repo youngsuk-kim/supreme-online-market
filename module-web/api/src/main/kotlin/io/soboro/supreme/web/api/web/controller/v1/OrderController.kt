@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class OrderController(
-    private val orderService: OrderService
+    private val orderService: OrderService,
 ) {
     @PostMapping("/api/v1/orders")
     fun order(@RequestBody request: OrderPlaceRequest): ResponseEntity<ApiResponse<Any>> {
@@ -18,5 +18,4 @@ class OrderController(
 
         return ResponseEntity.ok(ApiResponse.success())
     }
-
 }

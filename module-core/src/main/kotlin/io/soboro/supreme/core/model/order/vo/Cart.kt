@@ -21,4 +21,3 @@ data class Cart(
         val optionTitle: OptionTitle,
     )
 }
-

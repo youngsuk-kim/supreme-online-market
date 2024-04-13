@@ -1,13 +1,13 @@
 package io.soboro.supreme.core.application
 
-import io.soboro.supreme.core.model.product.vo.ProductDetail
-import io.soboro.supreme.core.model.product.repository.ProductRepository
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.entity.ProductImage
 import io.soboro.supreme.core.model.product.entity.ProductOptionGroup
 import io.soboro.supreme.core.model.product.entity.ProductOptionItem
 import io.soboro.supreme.core.model.product.enums.ProductType
 import io.soboro.supreme.core.model.product.exception.ProductNotFoundException
+import io.soboro.supreme.core.model.product.repository.ProductRepository
+import io.soboro.supreme.core.model.product.vo.ProductDetail
 import org.springframework.stereotype.Service
 
 @Service
@@ -28,7 +28,7 @@ class ProductService(
             brandName = product.brandName,
             description = product.description,
             detailImages = product.images.map(::toDetailImage),
-            optionGroups = product.productOptionGroups.map(::toOptionGroup)
+            optionGroups = product.productOptionGroups.map(::toOptionGroup),
         )
     }
 

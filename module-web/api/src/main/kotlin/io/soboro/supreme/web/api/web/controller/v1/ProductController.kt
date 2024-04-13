@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class ProductController(
-    private val productService: ProductService
+    private val productService: ProductService,
 ) {
 
     @GetMapping("/api/v1/products/{id}")

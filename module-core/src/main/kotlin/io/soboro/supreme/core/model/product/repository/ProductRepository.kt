@@ -7,4 +7,3 @@ interface ProductRepository {
     fun findAll(type: ProductType): List<Product>
     fun findById(productId: Long): Product?
 }
-

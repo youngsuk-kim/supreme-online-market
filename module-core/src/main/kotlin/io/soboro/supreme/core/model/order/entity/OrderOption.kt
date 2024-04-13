@@ -12,4 +12,4 @@ class OrderOption(
     @Column(nullable = false) var orderItemId: Long,
     @Column(nullable = false) var optionName: String,
     @Column(nullable = false) var optionTitle: OptionTitle,
-): BaseEntity()
+) : BaseEntity()

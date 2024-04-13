@@ -10,4 +10,4 @@ import jakarta.persistence.Entity
 class Shipment(
     @Column var orderId: Long,
     @Embedded var shipping: Shipping,
-): BaseEntity()
+) : BaseEntity()

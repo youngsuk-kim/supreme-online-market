@@ -15,5 +15,5 @@ class OrderItem(
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Order::class) val order: Order,
     @Column(nullable = false) var productName: String,
     @Column(nullable = false) var productCount: Int,
-    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL]) val orderOption: List<OrderOption>
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL]) val orderOption: List<OrderOption>,
 ) : BaseEntity()
