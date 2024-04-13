@@ -27,7 +27,6 @@ class OrderService(
         val shipment = Shipment(
             orderId = order.id!!,
             shipping = shipping,
-            amount = Money.won(3000)
         )
 
         orderRepository.save(order)
