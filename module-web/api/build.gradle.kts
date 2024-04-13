@@ -20,4 +20,11 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
+
+    // Only for test
+    testCompileOnly("jakarta.servlet:jakarta.servlet-api")
+    testCompileOnly("org.springframework.boot:spring-boot-starter-test")
+    testApi("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testApi("org.springframework.restdocs:spring-restdocs-restassured")
+    testApi("io.rest-assured:spring-mock-mvc")
 }
