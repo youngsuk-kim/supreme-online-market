@@ -5,24 +5,30 @@ import io.soboro.supreme.core.model.product.enums.Option
 import io.soboro.supreme.core.model.shipment.Shipping
 import java.math.BigDecimal
 
-data class OrderPlaceRequest (
+data class OrderPlaceRequest(
     val senderName: String,
     val senderPhoneNumber: String,
     val receiverName: String,
     val receiverPhoneNumber: String,
     val destination: Address,
-    val cart: Cart
+    val cart: Cart,
 ) {
     data class Cart(
         var userId: Long,
-        var cartItems: List<CartOptionItem>,
+        var cartOptionGroups: List<CartOptionGroup>,
     ) {
 
-        data class CartOptionItem(
-            val name: String,
-            val option: Option,
+        data class CartOptionGroup(
+            val options: List<CartOptionItem>,
+            val productName: String,
+            val price: BigDecimal,
             val count: Int,
-            val price: BigDecimal
+        )
+
+        data class CartOptionItem(
+            val orderItemId: Long,
+            val optionName: String,
+            val option: Option,
         )
     }
 
@@ -31,13 +37,24 @@ data class OrderPlaceRequest (
     }
 
     fun toCart(): io.soboro.supreme.core.model.order.Cart {
-        return io.soboro.supreme.core.model.order.Cart(
-            userId = cart.userId,
-            cartItems = cart.cartItems.map {
+        val cartOptionGroups = cart.cartOptionGroups.map { cartOptionGroup ->
+            val options = cartOptionGroup.options.map { cartOptionItem ->
                 io.soboro.supreme.core.model.order.Cart.CartOptionItem(
-                    it.name, it.option, it.count, it.price
+                    orderItemId = cartOptionItem.orderItemId,
+                    optionName = cartOptionItem.optionName,
+                    option = cartOptionItem.option
                 )
             }
+            io.soboro.supreme.core.model.order.Cart.CartOptionGroup(
+                options = options,
+                productName = cartOptionGroup.productName,
+                count = cartOptionGroup.count,
+                price = cartOptionGroup.price
+            )
+        }
+        return io.soboro.supreme.core.model.order.Cart(
+            userId = cart.userId,
+            cartOptionGroups = cartOptionGroups
         )
     }
 }

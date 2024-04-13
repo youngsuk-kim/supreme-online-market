@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class OrderController(
     private val orderService: OrderService
 ) {
-    @PostMapping("/api/v1/order")
+    @PostMapping("/api/v1/orders")
     fun order(@RequestBody request: OrderPlaceRequest): ResponseEntity<ApiResponse<Any>> {
         orderService.place(request.toCart(), request.toShippingInfo())
 

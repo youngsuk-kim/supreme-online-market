@@ -5,14 +5,20 @@ import java.math.BigDecimal
 
 data class Cart(
     var userId: Long,
-    var cartItems: List<CartOptionItem>,
+    var cartOptionGroups: List<CartOptionGroup>,
 ) {
 
-    data class CartOptionItem(
-        val name: String,
-        val option: Option,
+    data class CartOptionGroup(
+        val options: List<CartOptionItem>,
+        val productName: String,
         val count: Int,
-        val price: BigDecimal
+        val price: BigDecimal,
+    )
+
+    data class CartOptionItem(
+        val orderItemId: Long,
+        val optionName: String,
+        val option: Option,
     )
 }
 
