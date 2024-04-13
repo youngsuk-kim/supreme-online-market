@@ -5,7 +5,7 @@ import io.soboro.supreme.core.model.product.enums.Option
 import io.soboro.supreme.core.model.shipment.Shipping
 import java.math.BigDecimal
 
-class OrderPlaceRequest (
+data class OrderPlaceRequest (
     val senderName: String,
     val senderPhoneNumber: String,
     val receiverName: String,
