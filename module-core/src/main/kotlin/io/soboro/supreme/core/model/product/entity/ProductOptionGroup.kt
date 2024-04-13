@@ -13,5 +13,5 @@ import jakarta.persistence.Table
 class ProductOptionGroup(
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Product::class) var product: Product,
     @OneToMany var optionItems: List<ProductOptionItem>,
-    @Column private var stock: Int,
+    @Column val stock: Int,
 ) : BaseEntity()

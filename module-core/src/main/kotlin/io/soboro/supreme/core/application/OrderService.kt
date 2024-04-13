@@ -1,14 +1,14 @@
 package io.soboro.supreme.core.application
 
-import io.soboro.supreme.core.model.order.Cart
-import io.soboro.supreme.core.model.order.OrderItemRepository
-import io.soboro.supreme.core.model.order.OrderRepository
+import io.soboro.supreme.core.model.order.vo.Cart
+import io.soboro.supreme.core.model.order.repository.OrderItemRepository
+import io.soboro.supreme.core.model.order.repository.OrderRepository
 import io.soboro.supreme.core.model.order.entity.Order
 import io.soboro.supreme.core.model.order.entity.OrderItem
 import io.soboro.supreme.core.model.order.entity.OrderOption
-import io.soboro.supreme.core.model.shipment.Shipment
-import io.soboro.supreme.core.model.shipment.ShipmentRepository
-import io.soboro.supreme.core.model.shipment.Shipping
+import io.soboro.supreme.core.model.shipment.entity.Shipment
+import io.soboro.supreme.core.model.shipment.repository.ShipmentRepository
+import io.soboro.supreme.core.model.shipment.vo.Shipping
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

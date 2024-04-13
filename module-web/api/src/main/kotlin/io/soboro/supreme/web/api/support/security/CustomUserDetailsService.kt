@@ -1,6 +1,6 @@
 package io.soboro.supreme.web.api.support.security
 
-import io.soboro.supreme.core.model.user.UserRepository
+import io.soboro.supreme.core.model.user.repository.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

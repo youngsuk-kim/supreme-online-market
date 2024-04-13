@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.order
+package io.soboro.supreme.core.model.order.vo
 
 import io.soboro.supreme.core.model.product.enums.OptionTitle
 import java.math.BigDecimal

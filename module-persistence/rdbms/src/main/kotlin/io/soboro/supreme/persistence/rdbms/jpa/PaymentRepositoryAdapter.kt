@@ -1,6 +1,6 @@
 package io.soboro.supreme.persistence.rdbms.jpa
 
-import io.soboro.supreme.core.model.payment.PaymentRepository
+import io.soboro.supreme.core.model.payment.repository.PaymentRepository
 import org.springframework.stereotype.Repository
 
 @Repository

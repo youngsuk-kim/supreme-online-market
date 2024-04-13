@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.product
+package io.soboro.supreme.core.model.product.repository
 
 import io.soboro.supreme.core.model.product.entity.Product
 

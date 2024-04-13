@@ -2,7 +2,7 @@ package io.soboro.supreme.persistence.rdbms.jpa
 
 import io.soboro.supreme.core.model.user.entity.User
 import io.soboro.supreme.core.model.user.vo.Email
-import io.soboro.supreme.core.model.user.UserRepository
+import io.soboro.supreme.core.model.user.repository.UserRepository
 import org.springframework.stereotype.Repository
 
 @Repository

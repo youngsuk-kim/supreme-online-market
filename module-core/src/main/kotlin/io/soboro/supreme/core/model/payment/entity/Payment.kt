@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.payment
+package io.soboro.supreme.core.model.payment.entity
 
 import io.soboro.supreme.core.model.common.BaseEntity
 import io.soboro.supreme.core.model.common.Money

@@ -1,7 +1,7 @@
 package io.soboro.supreme.persistence.rdbms.jpa
 
-import io.soboro.supreme.core.model.shipment.Shipment
-import io.soboro.supreme.core.model.shipment.ShipmentRepository
+import io.soboro.supreme.core.model.shipment.entity.Shipment
+import io.soboro.supreme.core.model.shipment.repository.ShipmentRepository
 import org.springframework.stereotype.Repository
 
 @Repository

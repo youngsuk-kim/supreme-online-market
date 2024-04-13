@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.order
+package io.soboro.supreme.core.model.order.repository
 
 import io.soboro.supreme.core.model.order.entity.OrderItem
 

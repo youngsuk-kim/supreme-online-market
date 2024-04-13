@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.user
+package io.soboro.supreme.core.model.user.repository
 
 import io.soboro.supreme.core.model.user.entity.User
 import io.soboro.supreme.core.model.user.vo.Email

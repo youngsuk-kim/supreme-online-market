@@ -12,6 +12,7 @@ import jakarta.persistence.Table
 @Table(name = "product")
 class Product(
     @OneToMany(cascade = [CascadeType.ALL]) var productOptionGroups: List<ProductOptionGroup>,
+    @OneToMany(cascade = [CascadeType.ALL]) var images: List<ProductImage>,
     @OneToOne var productTimeLimit: ProductTimeLimit,
     @Column var productName: String,
     @Column var brandName: String,

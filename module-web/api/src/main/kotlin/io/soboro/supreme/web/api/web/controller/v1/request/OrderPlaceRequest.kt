@@ -1,8 +1,9 @@
 package io.soboro.supreme.web.api.web.controller.v1.request
 
 import io.soboro.supreme.core.model.common.Address
+import io.soboro.supreme.core.model.order.vo.Cart
 import io.soboro.supreme.core.model.product.enums.OptionTitle
-import io.soboro.supreme.core.model.shipment.Shipping
+import io.soboro.supreme.core.model.shipment.vo.Shipping
 import java.math.BigDecimal
 
 data class OrderPlaceRequest(
@@ -36,23 +37,23 @@ data class OrderPlaceRequest(
         return Shipping(senderName, senderPhoneNumber, receiverName, receiverPhoneNumber, destination)
     }
 
-    fun toCart(): io.soboro.supreme.core.model.order.Cart {
+    fun toCart(): io.soboro.supreme.core.model.order.vo.Cart {
         val cartOptionGroups = cart.cartOptionGroups.map { cartOptionGroup ->
             val options = cartOptionGroup.options.map { cartOptionItem ->
-                io.soboro.supreme.core.model.order.Cart.CartOptionItem(
+                io.soboro.supreme.core.model.order.vo.Cart.CartOptionItem(
                     orderItemId = cartOptionItem.orderItemId,
                     optionName = cartOptionItem.optionName,
                     optionTitle = cartOptionItem.optionTitle
                 )
             }
-            io.soboro.supreme.core.model.order.Cart.CartOptionGroup(
+            io.soboro.supreme.core.model.order.vo.Cart.CartOptionGroup(
                 options = options,
                 productName = cartOptionGroup.productName,
                 count = cartOptionGroup.count,
                 price = cartOptionGroup.price
             )
         }
-        return io.soboro.supreme.core.model.order.Cart(
+        return Cart(
             userId = cart.userId,
             cartOptionGroups = cartOptionGroups
         )
