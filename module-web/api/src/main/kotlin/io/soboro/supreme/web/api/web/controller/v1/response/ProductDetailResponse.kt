@@ -9,6 +9,7 @@ data class ProductDetailResponse(
     val price: String
 ) {
     companion object {
-        fun from(product: Product) = ProductDetailResponse(product.id!!, product.productName, product.description, product.price().toString())
+        // FIXME
+        fun from(product: Product) = ProductDetailResponse(product.id!!, product.productName, product.description, product.toString())
     }
 }
