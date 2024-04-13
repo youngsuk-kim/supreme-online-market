@@ -35,7 +35,7 @@ class ProductService(
     private fun toDetailImage(productImage: ProductImage): ProductDetail.DetailImage {
         return ProductDetail.DetailImage(
             url = productImage.url,
-            order = productImage.order,
+            order = productImage.sequence,
             description = productImage.description,
         )
     }

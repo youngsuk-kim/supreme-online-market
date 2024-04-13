@@ -8,6 +8,6 @@ import jakarta.persistence.Table
 @Table(name = "product_image")
 class ProductImage(
     val url: String,
-    val order: Int,
+    val sequence: Int,
     val description: String,
 ) : BaseEntity()
