@@ -11,9 +11,6 @@ spring:
       - jwt.yml
 
   web.resources.add-mappings: false
-  mvc:
-    favicon:
-      enabled: off
 
 ---
 spring.config.activate.on-profile: local
