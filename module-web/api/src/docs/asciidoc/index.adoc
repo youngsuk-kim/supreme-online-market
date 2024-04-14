@@ -17,14 +17,12 @@ include::{snippets}/회원 가입/response-fields.adoc[]
 ==== Curl Command
 include::{snippets}/회원 가입/curl-request.adoc[]
 
-// '''
-
-// === 로그인 API
-// ==== Curl Request
-// include::{snippets}/로그인/curl-request.adoc[]
-// ==== Request Fields
-// include::{snippets}/로그인/request-fields.adoc[]
-// ==== Http Response
-// include::{snippets}/로그인/http-response.adoc[]
-// ==== Response Fields
-// include::{snippets}/로그인/response-fields.adoc[]
+=== 로그인 API
+==== HTTP Request Body
+include::{snippets}/로그인/http-request.adoc[]
+==== HTTP Response Body
+include::{snippets}/로그인/http-response.adoc[]
+==== HTTP Response Type
+include::{snippets}/로그인/response-fields.adoc[]
+==== Curl Command
+include::{snippets}/로그인/curl-request.adoc[]

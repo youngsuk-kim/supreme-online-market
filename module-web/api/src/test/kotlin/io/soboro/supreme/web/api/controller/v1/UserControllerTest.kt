@@ -12,6 +12,7 @@ import io.soboro.supreme.web.api.RestDocsUtils.requestPreprocessor
 import io.soboro.supreme.web.api.RestDocsUtils.responsePreprocessor
 import io.soboro.supreme.web.api.support.security.JwtProcessor
 import io.soboro.supreme.web.api.web.controller.v1.UserController
+import io.soboro.supreme.web.api.web.controller.v1.request.UserLoginRequest
 import io.soboro.supreme.web.api.web.controller.v1.request.UserRegisterRequest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -39,18 +40,18 @@ class UserControllerTest : RestDocsTest() {
     @Test
     fun `user register api`() {
         every { registerService.register(any(), any()) } just runs
-        every { loginService.validateUser(any(), any()) } just runs
-        every { jwtProcessor.generateToken(any(), any()) } returns "example-token"
 
         given()
             .contentType(ContentType.JSON)
             .body(exampleUserRegisterRequest())
             .post("/api/v1/register")
-        .then()
+            .then()
             .status(HttpStatus.OK)
-            .apply(document("회원 가입", requestPreprocessor(), responsePreprocessor(),
+            .apply(
+                document(
+                    "회원 가입", requestPreprocessor(), responsePreprocessor(),
                     responseFields(
-                        fieldWithPath("result").type(JsonFieldType.STRING).description("Success"),
+                        fieldWithPath("result").type(JsonFieldType.STRING).ignored(),
                         fieldWithPath("data").type(JsonFieldType.NULL).ignored(),
                         fieldWithPath("error").type(JsonFieldType.NULL).ignored(),
                     ),
@@ -68,6 +69,29 @@ class UserControllerTest : RestDocsTest() {
         province = "강남구",
         detail = "강남역 10번 출구",
     )
+
+    @Test
+    fun `user login api`() {
+        every { jwtProcessor.generateToken(any(), any()) } returns "example-token"
+        every { loginService.validateUser(any(), any()) } just runs
+
+        given()
+            .contentType(ContentType.JSON)
+            .body(UserLoginRequest("example@example.com", "example-password"))
+            .post("/api/v1/login")
+            .then()
+            .status(HttpStatus.OK)
+            .apply(
+                document(
+                    "로그인", requestPreprocessor(), responsePreprocessor(),
+                    responseFields(
+                        fieldWithPath("result").type(JsonFieldType.STRING).ignored(),
+                        fieldWithPath("data.token").type(JsonFieldType.STRING).description("access-token"),
+                        fieldWithPath("error").type(JsonFieldType.NULL).ignored(),
+                    ),
+                ),
+            )
+    }
 
 
 //    @Test
