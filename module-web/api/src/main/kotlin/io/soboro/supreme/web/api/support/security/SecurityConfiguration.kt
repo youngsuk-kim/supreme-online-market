@@ -44,6 +44,7 @@ class SecurityConfiguration(
     ): SecurityFilterChain {
         http.csrf { it.disable() }
             .headers { it.frameOptions { frameOptions -> frameOptions.sameOrigin() } }
+            .cors { it.configurationSource(corsConfigurationSource()) }
             .authorizeHttpRequests {
                 it.requestMatchers(*allowedUrls).permitAll()
                     .anyRequest().authenticated()
@@ -58,12 +59,13 @@ class SecurityConfiguration(
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
 
-        configuration.setAllowedOriginPatterns(listOf("*"))
+        // 로컬호스트 오리진만 허용하도록 설정
+        configuration.setAllowedOriginPatterns(listOf("http://localhost:8081", "http://localhost:8082"))
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
 
         val source = UrlBasedCorsConfigurationSource()
-        UrlBasedCorsConfigurationSource().registerCorsConfiguration("/**", configuration)
+        source.registerCorsConfiguration("/**", configuration)
 
         return source
     }

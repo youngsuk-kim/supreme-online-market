@@ -2,10 +2,14 @@ rootProject.name = "supreme-online-store"
 
 include(
 	"module-web:api",
+	"module-core",
 	"module-persistence:rdbms",
+
 	"module-support:logging",
 	"module-support:monitoring",
-	"module-core"
+
+    "module-clients:clients-pay-toss",
+    "module-clients:clients-pay-kakao"
 )
 
 pluginManagement {
