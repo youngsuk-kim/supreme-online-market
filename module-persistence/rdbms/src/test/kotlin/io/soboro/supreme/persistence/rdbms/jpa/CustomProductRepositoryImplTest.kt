@@ -13,7 +13,7 @@ import org.springframework.test.context.TestConstructor
 class CustomProductRepositoryImplTest {
 
     @Autowired
-    private lateinit var repository: CustomProductRepositoryImpl
+    private lateinit var repository: ProductCustomRepositoryImpl
 
 //    @Test
 //    fun `products pagination`() {

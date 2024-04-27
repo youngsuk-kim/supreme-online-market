@@ -8,10 +8,18 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class ProductRepositoryAdapter(
-    private val productJpaRepository: ProductJpaRepository,
+    private val productJpaRepository: ProductJpaCustomRepository,
 ) : ProductRepository {
     override fun findAll(type: ProductType): List<Product> {
         return productJpaRepository.findAll()
+    }
+
+    override fun saveAll(products: List<Product>) {
+        productJpaRepository.saveAll(products)
+    }
+
+    override fun save(product: Product) {
+        productJpaRepository.save(product)
     }
 
     override fun findById(productId: Long): Product? {

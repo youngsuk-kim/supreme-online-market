@@ -9,13 +9,16 @@ import io.soboro.supreme.core.model.product.exception.ProductNotFoundException
 import io.soboro.supreme.core.model.product.repository.ProductRepository
 import io.soboro.supreme.core.model.product.vo.ProductDetail
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class ProductService(
     private val productRepository: ProductRepository,
 ) {
+    @Transactional(readOnly = true)
     fun list(type: ProductType): List<Product> {
-        return productRepository.findAll(type)
+        val findAll = productRepository.findAll(type)
+        return findAll
     }
 
     fun detail(productId: Long): ProductDetail {
