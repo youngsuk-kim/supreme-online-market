@@ -13,6 +13,7 @@ allOpen {
 }
 
 dependencies {
+    implementation(project(":module-core"))
 
     api("org.springframework.boot:spring-boot-starter-data-jpa")
 
