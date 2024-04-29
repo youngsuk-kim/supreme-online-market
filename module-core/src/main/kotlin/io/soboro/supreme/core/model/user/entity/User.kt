@@ -35,9 +35,11 @@ class User(
         this.userSecret.encode(passwordEncoder)
     }
 
+    fun set(token: String) {
+        this.userSecret.token = token
+    }
+
     fun email() = this.userSecret.email
 
     fun password() = this.userSecret.password
-
-    fun editPersonalInfo(newAddress: Address) = this.address.updateTo(newAddress)
 }

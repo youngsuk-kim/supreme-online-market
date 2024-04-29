@@ -10,6 +10,7 @@ import jakarta.persistence.Entity
 
 @Entity
 class UserSecret(
+    @Column(unique = true, length = 500) var token: String? = null,
     @Column(nullable = false, unique = true) val email: Email,
     @Column(nullable = false, unique = true) val phoneNumber: PhoneNumber,
     @Column(nullable = false) var password: Password,

@@ -35,9 +35,9 @@ class InitDatabase(
             username = "test",
             address = Address("서울시", "강남구", "비싸 오피스텔"),
             userSecret = UserSecret(
-                Email("thayer@naver.com"),
-                PhoneNumber("01053092392"),
-                Password(passwordEncoder.encode("1234")),
+                email = Email("thayer@naver.com"),
+                phoneNumber = PhoneNumber("01053092392"),
+                password = Password(passwordEncoder.encode("1234")),
             ),
         )
 

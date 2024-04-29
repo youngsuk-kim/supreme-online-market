@@ -24,4 +24,8 @@ class UserRepositoryAdapter(
     override fun findByEmail(email: Email): User? {
         return userJpaRepository.findByUserSecretEmail(email)
     }
+
+    override fun findByToken(token: String): User? {
+        return userJpaRepository.findByUserSecretToken(token)
+    }
 }

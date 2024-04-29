@@ -34,7 +34,7 @@ class AuthenticationFilter(
             throw IllegalStateException("Authorization header is missing")
         }
 
-        val decodedJWT = jwtProcessor.validateToken(request.getHeaders(HttpHeaders.AUTHORIZATION).toString())
+        val decodedJWT = jwtProcessor.validateToken(request.getHeader(HttpHeaders.AUTHORIZATION))
 
         if (decodedJWT.getClaim(JwtProcessor.CLAIM_KEY_USERNAME).asInt() == INVALID_JWT_CODE) {
             throw IllegalStateException("JWT token is not valid")

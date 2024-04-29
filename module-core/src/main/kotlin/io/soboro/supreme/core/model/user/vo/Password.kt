@@ -31,4 +31,8 @@ value class Password(private val value: String) {
     fun containsDigit(): Boolean {
         return value.any { it.isDigit() }
     }
+
+    override fun toString(): String {
+        return value
+    }
 }

@@ -23,6 +23,7 @@ class SecurityConfiguration(
     companion object {
         val allowedUrls = arrayOf(
             "/",
+            "/me",
             "/health",
             "/api/v1/register",
             "/api/v1/login",

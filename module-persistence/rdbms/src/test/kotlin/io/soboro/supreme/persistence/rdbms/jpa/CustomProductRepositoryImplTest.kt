@@ -1,19 +1,22 @@
 package io.soboro.supreme.persistence.rdbms.jpa
 
+import io.lettuce.core.RedisClient
+import io.soboro.supreme.persistence.redis.config.LettuceConfig
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.TestConstructor
 
-@SpringBootTest
-@ConfigurationPropertiesScan
-@ActiveProfiles("local")
-@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@SpringBootTest(classes = [LettuceConfig::class])
 class CustomProductRepositoryImplTest {
 
     @Autowired
-    private lateinit var repository: ProductCustomRepositoryImpl
+    private lateinit var redisClient: RedisClient
+
+    @Test
+    fun `redis connection test`() {
+        redisClient.connect().sync()
+            .hset("userId", "productId", "1")
+    }
 
 //    @Test
 //    fun `products pagination`() {

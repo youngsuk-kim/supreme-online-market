@@ -10,4 +10,5 @@ interface UserRepository {
     fun existsByEmail(email: Email): Boolean
     fun save(user: User)
     fun findByEmail(email: Email): User?
+    fun findByToken(token: String): User?
 }

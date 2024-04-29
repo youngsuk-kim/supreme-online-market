@@ -22,9 +22,9 @@ data class UserRegisterRequest(
             username = this.username,
             address = Address(this.city, this.province, this.detail),
             userSecret = UserSecret(
-                Email(this.email),
-                PhoneNumber(this.phoneNumber),
-                Password(this.password),
+                email = Email(this.email),
+                phoneNumber = PhoneNumber(this.phoneNumber),
+                password = Password(this.password),
             ),
         )
     }

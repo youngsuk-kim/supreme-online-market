@@ -5,7 +5,7 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.runs
 import io.restassured.http.ContentType
-import io.soboro.supreme.core.application.LoginService
+import io.soboro.supreme.core.application.AuthService
 import io.soboro.supreme.core.application.RegisterService
 import io.soboro.supreme.web.api.RestDocsTest
 import io.soboro.supreme.web.api.RestDocsUtils.requestPreprocessor
@@ -24,16 +24,16 @@ import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
 
 class UserControllerTest : RestDocsTest() {
     private lateinit var registerService: RegisterService
-    private lateinit var loginService: LoginService
+    private lateinit var authService: AuthService
     private lateinit var jwtProcessor: JwtProcessor
     private lateinit var controller: UserController
 
     @BeforeEach
     fun setUp() {
         registerService = mockk()
-        loginService = mockk()
+        authService = mockk()
         jwtProcessor = mockk()
-        controller = UserController(registerService, loginService, jwtProcessor)
+        controller = UserController(registerService, authService, jwtProcessor)
         mockMvc = mockController(controller)
     }
 
@@ -49,7 +49,9 @@ class UserControllerTest : RestDocsTest() {
             .status(HttpStatus.OK)
             .apply(
                 document(
-                    "회원 가입", requestPreprocessor(), responsePreprocessor(),
+                    "회원 가입",
+                    requestPreprocessor(),
+                    responsePreprocessor(),
                     responseFields(
                         fieldWithPath("result").type(JsonFieldType.STRING).ignored(),
                         fieldWithPath("data").type(JsonFieldType.NULL).ignored(),
@@ -73,7 +75,7 @@ class UserControllerTest : RestDocsTest() {
     @Test
     fun `user login api`() {
         every { jwtProcessor.generateToken(any(), any()) } returns "example-token"
-        every { loginService.validateUser(any(), any()) } just runs
+        every { authService.login(any(), any()) } just runs
 
         given()
             .contentType(ContentType.JSON)
@@ -83,7 +85,9 @@ class UserControllerTest : RestDocsTest() {
             .status(HttpStatus.OK)
             .apply(
                 document(
-                    "로그인", requestPreprocessor(), responsePreprocessor(),
+                    "로그인",
+                    requestPreprocessor(),
+                    responsePreprocessor(),
                     responseFields(
                         fieldWithPath("result").type(JsonFieldType.STRING).ignored(),
                         fieldWithPath("data.token").type(JsonFieldType.STRING).description("access-token"),
@@ -92,7 +96,6 @@ class UserControllerTest : RestDocsTest() {
                 ),
             )
     }
-
 
 //    @Test
 //    fun examplePost() {
