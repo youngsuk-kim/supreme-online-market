@@ -1,36 +1,35 @@
 rootProject.name = "supreme-online-store"
 
 include(
-	"module-web:api",
-	"module-core",
-	"module-persistence:rdbms",
+    "module-web:api",
+    "module-core",
 
-	"module-support:logging",
-	"module-support:monitoring",
+    "module-persistence:rdbms",
+    "module-persistence:nosql",
 
-    "module-clients:clients-pay-toss",
-    "module-clients:clients-pay-kakao"
+    "module-support:logging",
+    "module-support:monitoring",
 )
 
 pluginManagement {
-	val kotlinVersion: String by settings
-	val springBootVersion: String by settings
-	val springDependencyManagementVersion: String by settings
-	val asciidoctorConvertVersion: String by settings
-	val ktlintVersion: String by settings
+    val kotlinVersion: String by settings
+    val springBootVersion: String by settings
+    val springDependencyManagementVersion: String by settings
+    val asciidoctorConvertVersion: String by settings
+    val ktlintVersion: String by settings
 
-	resolutionStrategy {
-		eachPlugin {
-			when (requested.id.id) {
-				"org.jetbrains.kotlin.jvm" -> useVersion(kotlinVersion)
-				"org.jetbrains.kotlin.kapt" -> useVersion(kotlinVersion)
-				"org.jetbrains.kotlin.plugin.spring" -> useVersion(kotlinVersion)
-				"org.jetbrains.kotlin.plugin.jpa" -> useVersion(kotlinVersion)
-				"org.springframework.boot" -> useVersion(springBootVersion)
-				"io.spring.dependency-management" -> useVersion(springDependencyManagementVersion)
-				"org.asciidoctor.jvm.convert" -> useVersion(asciidoctorConvertVersion)
-				"org.jlleitschuh.gradle.ktlint" -> useVersion(ktlintVersion)
-			}
-		}
-	}
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "org.jetbrains.kotlin.jvm" -> useVersion(kotlinVersion)
+                "org.jetbrains.kotlin.kapt" -> useVersion(kotlinVersion)
+                "org.jetbrains.kotlin.plugin.spring" -> useVersion(kotlinVersion)
+                "org.jetbrains.kotlin.plugin.jpa" -> useVersion(kotlinVersion)
+                "org.springframework.boot" -> useVersion(springBootVersion)
+                "io.spring.dependency-management" -> useVersion(springDependencyManagementVersion)
+                "org.asciidoctor.jvm.convert" -> useVersion(asciidoctorConvertVersion)
+                "org.jlleitschuh.gradle.ktlint" -> useVersion(ktlintVersion)
+            }
+        }
+    }
 }
