@@ -1,9 +1,9 @@
-package io.soboro.supreme.web.api.web.controller.v1.request
+package io.soboro.supreme.order.web
 
-import io.soboro.supreme.core.model.common.Address
-import io.soboro.supreme.core.model.product.enums.Option
-import io.soboro.supreme.core.model.product.vo.ProductUnit
-import io.soboro.supreme.core.model.shipment.vo.Shipping
+import io.soboro.supreme.order.core.model.common.Address
+import io.soboro.supreme.order.core.model.order.vo.Option
+import io.soboro.supreme.order.core.model.order.vo.OrderUnit
+import io.soboro.supreme.order.core.model.shipment.vo.Shipping
 
 data class OrderPlaceRequest(
     val orderItems: List<OrderItem>,
@@ -30,9 +30,9 @@ data class OrderPlaceRequest(
         )
     }
 
-    fun toProductUnits(): List<ProductUnit> {
+    fun toProductUnits(): List<OrderUnit> {
         return orderItems.map { item ->
-            ProductUnit(sku = item.sku, option = item.option, optionName = item.optionName, stock = item.quantity)
+            OrderUnit(sku = item.sku, option = item.option, optionName = item.optionName, stock = item.quantity)
         }
     }
 }

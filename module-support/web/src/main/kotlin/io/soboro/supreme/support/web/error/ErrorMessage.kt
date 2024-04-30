@@ -1,4 +1,6 @@
-package io.soboro.supreme.web.api.support.error
+package io.soboro.supreme.support.web.error
+
+import io.soboro.supreme.web.api.support.error.ErrorType
 
 data class ErrorMessage private constructor(
     val code: String,

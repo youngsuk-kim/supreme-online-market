@@ -3,7 +3,7 @@ package io.soboro.supreme.web.api.web.controller.v1
 import io.soboro.supreme.core.application.ProductService
 import io.soboro.supreme.core.model.product.enums.ProductType
 import io.soboro.supreme.core.model.product.vo.ProductDetail
-import io.soboro.supreme.web.api.support.response.ApiResponse
+import io.soboro.supreme.support.web.response.ApiResponse
 import io.soboro.supreme.web.api.web.controller.v1.response.ProductResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

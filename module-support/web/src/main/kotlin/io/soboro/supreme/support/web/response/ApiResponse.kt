@@ -1,7 +1,8 @@
-package io.soboro.supreme.web.api.support.response
+package io.soboro.supreme.support.web.response
 
-import io.soboro.supreme.web.api.support.error.ErrorMessage
+import io.soboro.supreme.support.web.error.ErrorMessage
 import io.soboro.supreme.web.api.support.error.ErrorType
+import io.soboro.supreme.web.api.support.response.ResultType
 
 data class ApiResponse<T> private constructor(
     val result: ResultType,
