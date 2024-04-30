@@ -1,4 +1,4 @@
-package io.soboro.supreme.core.model.common
+package io.soboro.supreme.order.core.model.common
 
 import java.math.BigDecimal
 
