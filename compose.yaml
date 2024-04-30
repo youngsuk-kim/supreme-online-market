@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
 
-# MySQL
+  # MySQL
   mysql1:
     image: mysql:8.0
     environment:
@@ -15,14 +15,14 @@ services:
       - mysql1_data:/var/lib/mysql
     restart: always
 
-# Redis
+  # Redis
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
     restart: always
 
-# Kafka
+  # Kafka
   zookeeper:
     image: zookeeper:latest
     ports:
@@ -42,21 +42,48 @@ services:
     depends_on:
       - zookeeper
 
+  # haproxy
+  haproxy:
+    image: haproxy:latest
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - "80:80"
+    depends_on:
+      - myapp1
+      - myapp2
+    networks:
+      - proxy
+
+  myapp1:
+    image: app:latest
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+    depends_on:
+      - mysql1
+    networks:
+      - proxy
+
+  myapp2:
+    image: app:latest
+    ports:
+      - "8082:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+    depends_on:
+      - mysql1
+    networks:
+      - proxy
+
 # Volume
 volumes:
   mysql1_data:
+networks:
+  proxy:
 
 
-#  myapp:
-#    image: app:latest
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=local
-#    networks:
-#      - monitoring
-#    depends_on:
-#      - mysql1
 #
 #  prometheus:
 #    image: prom/prometheus

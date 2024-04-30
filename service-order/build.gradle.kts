@@ -22,5 +22,11 @@ dependencies {
     implementation("io.asyncer:r2dbc-mysql:1.1.0")
     implementation("io.r2dbc:r2dbc-pool:1.0.1.RELEASE")
 
-    implementation("org.springframework.kafka:spring-kafka:3.1.2")
+    // kafka
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.apache.kafka:kafka-streams")
+    testImplementation("org.springframework.kafka:spring-kafka-test")
+
+    // for exception of netty in os m2
+    runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64")
 }
