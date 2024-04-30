@@ -1,13 +1,23 @@
-version: '3'
+version: '3.8'
 services:
+  mysql1:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: orders
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql1_data:/var/lib/mysql
+    restart: always
+
+
   redis:
     image: redis:latest
-    container_name: redis
     ports:
       - "6379:6379"
-    volumes:
-      - redis_data:/data
+    restart: always
 
 volumes:
-  redis_data:
-    driver: local
+  mysql1_data:
