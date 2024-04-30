@@ -49,7 +49,7 @@ class ProductService(
             options = productOptionGroup.optionItems.map { productOptionItem ->
                 ProductDetail.Option(
                     optionName = productOptionItem.optionName,
-                    optionTitle = productOptionItem.optionTitle.name,
+                    optionTitle = productOptionItem.option.name,
                 )
             },
         )
@@ -58,7 +58,7 @@ class ProductService(
     private fun toOption(productOptionItem: ProductOptionItem): ProductDetail.Option {
         return ProductDetail.Option(
             optionName = productOptionItem.optionName,
-            optionTitle = productOptionItem.optionTitle.name,
+            optionTitle = productOptionItem.option.name,
         )
     }
 }

@@ -1,11 +1,11 @@
 package io.soboro.supreme.core.application
 
+import io.soboro.supreme.core.model.cart.Cart
+import io.soboro.supreme.core.model.cart.CartItem
 import io.soboro.supreme.core.model.order.entity.Order
 import io.soboro.supreme.core.model.order.entity.OrderItem
-import io.soboro.supreme.core.model.order.entity.OrderOption
 import io.soboro.supreme.core.model.order.repository.OrderItemRepository
 import io.soboro.supreme.core.model.order.repository.OrderRepository
-import io.soboro.supreme.core.model.order.vo.Cart
 import io.soboro.supreme.core.model.shipment.entity.Shipment
 import io.soboro.supreme.core.model.shipment.repository.ShipmentRepository
 import io.soboro.supreme.core.model.shipment.vo.Shipping
@@ -24,7 +24,7 @@ class OrderService(
         val order = Order.create(cart.userId)
         orderRepository.save(order)
 
-        val orderItems = cart.cartOptionGroups.map { toOrderItem(it, order) }
+        val orderItems = cart.cartItems.map { toOrderItem(it, order) }
         orderItemRepository.saveAll(orderItems)
 
         val shipment = Shipment(
@@ -35,20 +35,13 @@ class OrderService(
         shipmentRepository.save(shipment)
     }
 
-    private fun toOrderItem(cartOptionGroups: Cart.CartOptionGroup, order: Order): OrderItem {
+    private fun toOrderItem(cartItem: CartItem, order: Order): OrderItem {
         return OrderItem(
             order = order,
-            productName = cartOptionGroups.productName,
-            productCount = cartOptionGroups.count,
-            orderOption = cartOptionGroups.options.map { toOrderOption(it) },
-        )
-    }
-
-    private fun toOrderOption(cartOptionItem: Cart.CartOptionItem): OrderOption {
-        return OrderOption(
-            orderItemId = cartOptionItem.orderItemId,
-            optionTitle = cartOptionItem.optionTitle,
-            optionName = cartOptionItem.optionName,
+            productName = cartItem.productName,
+            productCount = cartItem.count,
+            optionName = cartItem.optionName,
+            option = cartItem.option,
         )
     }
 }

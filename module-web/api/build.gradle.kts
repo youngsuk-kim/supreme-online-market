@@ -11,6 +11,7 @@ dependencies {
     implementation(project(":module-support:monitoring"))
     implementation(project(":module-support:logging"))
     implementation(project(":module-persistence:rdbms"))
+    implementation(project(":module-persistence:nosql"))
     implementation(project(":module-core"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")

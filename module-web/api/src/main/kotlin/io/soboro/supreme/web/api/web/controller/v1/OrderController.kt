@@ -14,7 +14,7 @@ class OrderController(
 ) {
     @PostMapping("/api/v1/orders")
     fun order(@RequestBody request: OrderPlaceRequest): ResponseEntity<ApiResponse<Any>> {
-        orderService.place(request.toCart(), request.toShippingInfo())
+//        orderService.place(request.toCart(), request.toShippingInfo())
 
         return ResponseEntity.ok(ApiResponse.success())
     }
