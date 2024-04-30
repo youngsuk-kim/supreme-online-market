@@ -48,7 +48,6 @@ subprojects {
         kapt("org.springframework.boot:spring-boot-configuration-processor")
         implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
         kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
-        runtimeOnly("org.springframework.boot:spring-boot-docker-compose")
     }
 
     tasks.getByName("bootJar") {
