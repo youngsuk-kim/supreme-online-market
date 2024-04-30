@@ -15,7 +15,7 @@ class CartService(
     }
 
     fun remove(userId: Long, cartItem: CartItem) {
-        cartRepository.add(userId, cartItem)
+        cartRepository.remove(userId, cartItem)
     }
 
     fun clear(userId: Long) {
