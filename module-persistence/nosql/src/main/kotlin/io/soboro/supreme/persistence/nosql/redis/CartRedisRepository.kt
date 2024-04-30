@@ -2,7 +2,7 @@ package io.soboro.supreme.persistence.nosql.redis
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.soboro.supreme.core.model.cart.Cart
-import io.soboro.supreme.core.model.cart.CartItem
+import io.soboro.supreme.core.model.cart.ProductUnit
 import io.soboro.supreme.core.model.product.repository.CartRepository
 import io.soboro.supreme.core.support.JsonUtility
 import org.springframework.data.redis.core.RedisTemplate
@@ -16,27 +16,27 @@ class CartRedisRepository(
 ) : CartRepository {
     private val cartPrefix = "cart:userId:"
 
-    override fun add(userId: Long, cartItem: CartItem) {
+    override fun add(userId: Long, productUnit: ProductUnit) {
         val cartKey = "$cartPrefix$userId"
         val currentCartJson = redisTemplate.opsForValue().get(cartKey)
         val currentCart = currentCartJson?.let { jsonUtility.fromJson(it, Cart::class.java) }
         val updatedCart = currentCart?.apply {
-            cartItems = cartItems + cartItem
-        } ?: Cart(userId, listOf(cartItem))
+            productUnits = productUnits + productUnit
+        } ?: Cart(userId, listOf(productUnit))
 
         jsonUtility.toJson(updatedCart)?.let {
             redisTemplate.opsForValue().set(cartKey, it)
         }
     }
 
-    override fun remove(userId: Long, cartItem: CartItem) {
+    override fun remove(userId: Long, productUnit: ProductUnit) {
         val cartKey = "$cartPrefix$userId"
         val cartJson = redisTemplate.opsForValue().get(cartKey)
         val cart = cartJson?.let { jsonUtility.fromJson(it, Cart::class.java) }
 
         cart?.let {
-            it.cartItems = it.cartItems.filterNot { item ->
-                item.productName == cartItem.productName && item.option == cartItem.option
+            it.productUnits = it.productUnits.filterNot { item ->
+                item.productName == productUnit.productName && item.option == productUnit.option
             }
             jsonUtility.toJson(it)?.let { updatedCartJson ->
                 redisTemplate.opsForValue().set(cartKey, updatedCartJson)

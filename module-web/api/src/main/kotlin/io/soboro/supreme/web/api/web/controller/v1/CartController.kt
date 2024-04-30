@@ -2,7 +2,7 @@ package io.soboro.supreme.web.api.web.controller.v1
 
 import io.soboro.supreme.core.application.CartService
 import io.soboro.supreme.core.model.cart.Cart
-import io.soboro.supreme.core.model.cart.CartItem
+import io.soboro.supreme.core.model.cart.ProductUnit
 import io.soboro.supreme.core.model.user.entity.User
 import io.soboro.supreme.web.api.support.annotation.Login
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -17,8 +17,8 @@ class CartController(
 ) {
 
     @PostMapping("/api/v1/carts")
-    fun add(@Login user: User, @RequestBody cartItem: CartItem) {
-        cartService.add(user.id!!, cartItem)
+    fun add(@Login user: User, @RequestBody productUnit: ProductUnit) {
+        cartService.add(user.id!!, productUnit)
     }
 
     @GetMapping("/api/v1/carts")
@@ -27,7 +27,7 @@ class CartController(
     }
 
     @DeleteMapping("/api/v1/carts")
-    fun remove(@Login user: User, @RequestBody cartItem: CartItem) {
-        cartService.remove(user.id!!, cartItem)
+    fun remove(@Login user: User, @RequestBody productUnit: ProductUnit) {
+        cartService.remove(user.id!!, productUnit)
     }
 }

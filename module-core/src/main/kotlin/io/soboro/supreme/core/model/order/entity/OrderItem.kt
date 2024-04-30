@@ -12,8 +12,8 @@ import jakarta.persistence.Table
 @Table(name = "order_item")
 class OrderItem(
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Order::class) val order: Order,
-    @Column(nullable = false) var productName: String,
-    @Column(nullable = false) var productCount: Int,
+    @Column(nullable = false) var sku: String,
+    @Column(nullable = false) var quantity: Int,
     @Column(nullable = false) var optionName: String,
     @Column(nullable = false) var option: Option,
 ) : BaseEntity()

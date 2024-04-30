@@ -4,7 +4,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.entity.QProduct.product
 import io.soboro.supreme.core.model.product.entity.QProductImage.productImage
-import io.soboro.supreme.core.model.product.entity.QProductOptionGroup.productOptionGroup
+import io.soboro.supreme.core.model.product.entity.QProductItem.productItem
 import io.soboro.supreme.core.model.product.repository.ProductCustomRepository
 import org.springframework.stereotype.Repository
 
@@ -17,7 +17,7 @@ class ProductCustomRepositoryImpl(
         return queryFactory
             .selectFrom(product)
             .where(product.id.eq(productId))
-            .leftJoin(product.productOptionGroups, productOptionGroup)
+            .leftJoin(product.productItems, productItem)
             .leftJoin(product.images, productImage)
             .fetchJoin()
             .fetchOne()

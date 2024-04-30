@@ -3,7 +3,7 @@ package io.soboro.supreme.core.model.cart
 import io.soboro.supreme.core.model.product.enums.Option
 import java.math.BigDecimal
 
-data class CartItem(
+data class ProductUnit(
     val optionName: String,
     val option: Option,
     val productName: String,

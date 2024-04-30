@@ -1,21 +1,18 @@
 package io.soboro.supreme.core.model.product.vo
 
+import io.soboro.supreme.core.model.product.enums.Option
+
 data class ProductDetail(
     val id: Long,
-    val optionGroups: List<OptionGroup>,
+    val items: List<OptionProduct>,
     val productName: String,
     val brandName: String,
     val description: String,
     val detailImages: List<DetailImage>,
 ) {
-    data class OptionGroup(
-        val options: List<Option>,
+    data class OptionProduct(
+        val option: Option,
         val stock: Int,
-    )
-
-    data class Option(
-        val optionTitle: String,
-        val optionName: String,
     )
 
     data class DetailImage(

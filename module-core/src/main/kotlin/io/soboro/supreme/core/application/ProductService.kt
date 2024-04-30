@@ -2,8 +2,7 @@ package io.soboro.supreme.core.application
 
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.entity.ProductImage
-import io.soboro.supreme.core.model.product.entity.ProductOptionGroup
-import io.soboro.supreme.core.model.product.entity.ProductOptionItem
+import io.soboro.supreme.core.model.product.entity.ProductItem
 import io.soboro.supreme.core.model.product.enums.ProductType
 import io.soboro.supreme.core.model.product.exception.ProductNotFoundException
 import io.soboro.supreme.core.model.product.repository.ProductRepository
@@ -31,7 +30,7 @@ class ProductService(
             brandName = product.brandName,
             description = product.description,
             detailImages = product.images.map(::toDetailImage),
-            optionGroups = product.productOptionGroups.map(::toOptionGroup),
+            items = product.productItems.map(::toItem),
         )
     }
 
@@ -43,22 +42,10 @@ class ProductService(
         )
     }
 
-    private fun toOptionGroup(productOptionGroup: ProductOptionGroup): ProductDetail.OptionGroup {
-        return ProductDetail.OptionGroup(
-            stock = productOptionGroup.stock,
-            options = productOptionGroup.optionItems.map { productOptionItem ->
-                ProductDetail.Option(
-                    optionName = productOptionItem.optionName,
-                    optionTitle = productOptionItem.option.name,
-                )
-            },
-        )
-    }
-
-    private fun toOption(productOptionItem: ProductOptionItem): ProductDetail.Option {
-        return ProductDetail.Option(
-            optionName = productOptionItem.optionName,
-            optionTitle = productOptionItem.option.name,
+    private fun toItem(productItem: ProductItem): ProductDetail.OptionProduct {
+        return ProductDetail.OptionProduct(
+            stock = productItem.productUnit.stock,
+            option = productItem.productUnit.option,
         )
     }
 }

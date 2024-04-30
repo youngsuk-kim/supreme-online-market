@@ -4,10 +4,10 @@ import io.soboro.supreme.core.model.common.Address
 import io.soboro.supreme.core.model.common.Money
 import io.soboro.supreme.core.model.product.entity.Product
 import io.soboro.supreme.core.model.product.entity.ProductImage
-import io.soboro.supreme.core.model.product.entity.ProductOptionGroup
-import io.soboro.supreme.core.model.product.entity.ProductOptionItem
+import io.soboro.supreme.core.model.product.entity.ProductItem
 import io.soboro.supreme.core.model.product.enums.Option
 import io.soboro.supreme.core.model.product.repository.ProductRepository
+import io.soboro.supreme.core.model.product.vo.ProductUnit
 import io.soboro.supreme.core.model.user.entity.User
 import io.soboro.supreme.core.model.user.entity.UserSecret
 import io.soboro.supreme.core.model.user.repository.UserRepository
@@ -19,7 +19,6 @@ import jakarta.annotation.PostConstruct
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
-import kotlin.random.Random
 
 @Component
 class InitDatabase(
@@ -58,13 +57,6 @@ class InitDatabase(
                 ),
             )
 
-            val optionItems = listOf(
-                ProductOptionItem(
-                    optionName = "Size",
-                    option = Option.SIZE,
-                ),
-            )
-
             // Create the product instance first without the option group
             val product = Product(
                 productName = "Nike Shoe Model $i",
@@ -72,17 +64,16 @@ class InitDatabase(
                 description = "A high-quality Nike shoe",
                 images = images,
                 price = Money(BigDecimal(20000)),
-                productOptionGroups = mutableListOf(),
+                productItems = mutableListOf(),
             )
 
             // Create the option group with the product instance
-            val optionGroup = ProductOptionGroup(
-                product = product, // Pass the product here
-                optionItems = optionItems,
-                stock = Random.nextInt(50, 100),
+            val productItem = ProductItem(
+                product = product,
+                productUnit = ProductUnit(option = Option.SIZE, optionName = "LARGE", stock = 3),
             )
 
-            product.productOptionGroups.add(optionGroup)
+            product.productItems.add(productItem)
 
             productRepository.save(product)
         }
