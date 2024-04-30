@@ -1,6 +1,8 @@
 rootProject.name = "supreme-online-store"
 
 include(
+    "service-order",
+
     "module-web:api",
     "module-core",
 
@@ -9,6 +11,7 @@ include(
 
     "module-support:logging",
     "module-support:monitoring",
+    "module-support:web",
 )
 
 pluginManagement {

@@ -8,13 +8,13 @@ tasks.getByName("jar") {
 
 dependencies {
 
+    implementation(project(":module-support:web"))
     implementation(project(":module-support:monitoring"))
     implementation(project(":module-support:logging"))
     implementation(project(":module-persistence:rdbms"))
     implementation(project(":module-persistence:nosql"))
     implementation(project(":module-core"))
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
 
     implementation("com.auth0:java-jwt:4.4.0")

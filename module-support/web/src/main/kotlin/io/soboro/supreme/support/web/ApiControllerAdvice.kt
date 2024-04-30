@@ -1,4 +1,4 @@
-package io.soboro.supreme.web.api.web.controller
+package io.soboro.supreme.support.web
 
 import io.soboro.supreme.web.api.support.error.ApiException
 import io.soboro.supreme.web.api.support.error.ErrorType
