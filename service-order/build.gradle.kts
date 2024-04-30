@@ -21,4 +21,6 @@ dependencies {
 
     implementation("io.asyncer:r2dbc-mysql:1.1.0")
     implementation("io.r2dbc:r2dbc-pool:1.0.1.RELEASE")
+
+    implementation("org.springframework.kafka:spring-kafka:3.1.2")
 }
