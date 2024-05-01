@@ -33,16 +33,16 @@
 
 ## 도메인 디자인 개요
 
-<img src = "images/supreme-time-deal-domain-design.png" width="100%" height="100%">
+<img src = "./docs/images/supreme-time-deal-domain-design.png" width="100%" height="100%">
 
 ## 사용자 디자인
 
-<img src = "images/account-flow.png" width="100%" height="100%">
+<img src = "./docs/images/account-flow.png" width="100%" height="100%">
 
 ## 상품 디자인
 
-<img src = "images/product-flow.png" width="100%" height="100%">
+<img src = "./docs/images/product-flow.png" width="100%" height="100%">
 
 ## 주문 디자인
 
-<img src = "images/order-flow.png" width="100%" height="100%">
+<img src = "./docs/images/order-flow.png" width="100%" height="100%">
