@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.interfaces.DecodedJWT
+import io.soboro.supreme.web.api.web.filter.AuthenticationFilter.Companion.INVALID_JWT_CODE
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.PropertySource
 import org.springframework.stereotype.Component
@@ -40,6 +41,11 @@ class JwtProcessor(
         println(bearerToken)
 
         return verifier.verify(resolveToken(bearerToken))
+    }
+
+    fun isOk(token: String): Boolean {
+        val validateToken = validateToken(token)
+        return validateToken.getClaim(CLAIM_KEY_USERNAME).asInt() != INVALID_JWT_CODE
     }
 
     private fun generateExpirationDate(): Date {

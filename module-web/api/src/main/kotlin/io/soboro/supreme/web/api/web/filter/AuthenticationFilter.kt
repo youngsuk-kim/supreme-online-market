@@ -22,7 +22,7 @@ class AuthenticationFilter(
 ) : OncePerRequestFilter() {
 
     companion object {
-        private const val INVALID_JWT_CODE = -1
+        const val INVALID_JWT_CODE = -1
     }
 
     override fun doFilterInternal(

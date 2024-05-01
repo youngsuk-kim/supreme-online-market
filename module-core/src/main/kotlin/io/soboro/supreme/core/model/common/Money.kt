@@ -1,7 +1,9 @@
 package io.soboro.supreme.core.model.common
 
+import jakarta.persistence.Embeddable
 import java.math.BigDecimal
 
+@Embeddable
 data class Money(private val amount: BigDecimal) {
     companion object {
         val ZERO = won(0)

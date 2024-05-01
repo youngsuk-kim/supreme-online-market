@@ -11,7 +11,7 @@ import io.soboro.supreme.web.api.RestDocsTest
 import io.soboro.supreme.web.api.RestDocsUtils.requestPreprocessor
 import io.soboro.supreme.web.api.RestDocsUtils.responsePreprocessor
 import io.soboro.supreme.web.api.support.security.JwtProcessor
-import io.soboro.supreme.web.api.web.controller.v1.UserController
+import io.soboro.supreme.web.api.web.controller.v1.AuthController
 import io.soboro.supreme.web.api.web.controller.v1.request.UserLoginRequest
 import io.soboro.supreme.web.api.web.controller.v1.request.UserRegisterRequest
 import org.junit.jupiter.api.BeforeEach
@@ -22,18 +22,18 @@ import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
 
-class UserControllerTest : RestDocsTest() {
+class AuthControllerTest : RestDocsTest() {
     private lateinit var registerService: RegisterService
     private lateinit var authService: AuthService
     private lateinit var jwtProcessor: JwtProcessor
-    private lateinit var controller: UserController
+    private lateinit var controller: AuthController
 
     @BeforeEach
     fun setUp() {
         registerService = mockk()
         authService = mockk()
         jwtProcessor = mockk()
-        controller = UserController(registerService, authService, jwtProcessor)
+        controller = AuthController(registerService, authService, jwtProcessor)
         mockMvc = mockController(controller)
     }
 

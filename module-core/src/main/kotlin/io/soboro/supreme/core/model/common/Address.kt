@@ -1,5 +1,8 @@
 package io.soboro.supreme.core.model.common
 
+import jakarta.persistence.Embeddable
+
+@Embeddable
 data class Address(
     // 시
     var city: String,

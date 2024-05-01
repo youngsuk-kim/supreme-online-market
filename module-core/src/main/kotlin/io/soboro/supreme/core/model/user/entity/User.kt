@@ -39,6 +39,8 @@ class User(
         this.userSecret.token = token
     }
 
+    fun token() = this.userSecret.token
+
     fun email() = this.userSecret.email
 
     fun password() = this.userSecret.password

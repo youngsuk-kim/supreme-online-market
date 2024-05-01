@@ -1,6 +1,7 @@
 package io.soboro.supreme.persistence.rdbms.jpa
 
 import io.soboro.supreme.core.model.user.entity.User
+import io.soboro.supreme.core.model.user.exception.UserNotFoundException
 import io.soboro.supreme.core.model.user.repository.UserRepository
 import io.soboro.supreme.core.model.user.vo.Email
 import org.springframework.stereotype.Repository
@@ -27,5 +28,9 @@ class UserRepositoryAdapter(
 
     override fun findByToken(token: String): User? {
         return userJpaRepository.findByUserSecretToken(token)
+    }
+
+    override fun findById(id: Long): User? {
+        return userJpaRepository.findById(id).orElseThrow(::UserNotFoundException)
     }
 }

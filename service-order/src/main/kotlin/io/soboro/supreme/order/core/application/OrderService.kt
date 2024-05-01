@@ -20,6 +20,10 @@ class OrderService(
 
     @Transactional
     fun place(userId: Long, productUnits: List<OrderUnit>, shipping: Shipping) {
+        // 로그인이 된 유저인지
+
+        // 재고가 남았는지
+
         val order = Order.create(userId)
         orderRepository.save(order)
 
