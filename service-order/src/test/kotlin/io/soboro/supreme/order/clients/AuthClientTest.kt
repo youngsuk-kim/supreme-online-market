@@ -5,7 +5,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 
+@ActiveProfiles("test")
 @SpringBootTest(classes = [WebClientConfig::class, AuthClient::class])
 class AuthClientTest {
 
@@ -15,9 +17,14 @@ class AuthClientTest {
     @Test
     fun `check user session is valid`() {
         runBlocking {
-            val login =
-                authClient.isLogin("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb2xhYmVhcjc1NCIsImV4cCI6MTcxNDUzMzU3Miwic3ViIjoiZHVkdGpycmxhMTIhIiwidXNlcm5hbWUiOiJ0aGF5ZXIyMzkxQG5hdmVyLmNvbSJ9.rqwV-Xyj1M0oRfPnZOtwC9RDORs_dmTB5tnfRGciitE")
-            assertThat(login).isTrue()
+            // given
+            val token = "example-token"
+
+            // when
+            val sut = authClient.isLogin(token)
+
+            // then
+            assertThat(sut).isTrue()
         }
     }
 }

@@ -16,25 +16,33 @@ class OrderService(
     private val orderRepository: OrderRepository,
     private val orderItemRepository: OrderItemRepository,
     private val shipmentRepository: ShipmentRepository,
+    private val authApi: AuthApi,
+    private val productApi: ProductApi
 ) {
 
     @Transactional
-    fun place(userId: Long, productUnits: List<OrderUnit>, shipping: Shipping) {
+    suspend fun place(token: String, userId: Long, productUnits: List<OrderUnit>, shipping: Shipping) {
         // 로그인이 된 유저인지
+        authApi.isLogin(token)
 
         // 재고가 남았는지
+        productApi.isStockEnoughForSale()
 
+        // 주문 생성
         val order = Order.create(userId)
         orderRepository.save(order)
 
+        // 주문 상품 생성
         val orderItems = productUnits.map { toOrderItem(it, order) }
         orderItemRepository.saveAll(orderItems)
 
+        // 배송 생성
         val shipment = Shipment(
             orderId = order.id!!,
             shipping = shipping,
         )
 
+        // 배송 저장
         shipmentRepository.save(shipment)
     }
 

@@ -1,5 +1,6 @@
 package io.soboro.supreme.order.clients
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.codec.ClientCodecConfigurer
@@ -8,7 +9,10 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClient.Builder
 
 @Configuration
-class WebClientConfig {
+class WebClientConfig(
+    @Value("\${api.base-url}")
+    private val baseUrl: String,
+) {
 
     @Bean
     fun webClientBuilder(): Builder {
@@ -22,6 +26,6 @@ class WebClientConfig {
 
     @Bean
     fun webClient(webClientBuilder: Builder): WebClient {
-        return webClientBuilder.baseUrl("http://localhost:8080").build()
+        return webClientBuilder.baseUrl(baseUrl).build()
     }
 }

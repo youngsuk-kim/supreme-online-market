@@ -1,5 +1,5 @@
 package io.soboro.supreme.order.core.application
 
-interface AuthService {
+interface AuthApi {
     suspend fun isLogin(token: String): Boolean
 }
