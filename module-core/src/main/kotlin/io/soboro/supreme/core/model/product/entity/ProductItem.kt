@@ -14,4 +14,7 @@ import jakarta.persistence.Table
 class ProductItem(
     @Embedded var productUnit: ProductUnit,
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "product_id") var product: Product,
-) : BaseEntity()
+) : BaseEntity() {
+
+    fun hasEnough(quantity: Int) = this.productUnit.stock > quantity
+}

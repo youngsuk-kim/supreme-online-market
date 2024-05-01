@@ -8,6 +8,7 @@ import io.soboro.supreme.web.api.web.controller.v1.response.ProductResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -26,5 +27,14 @@ class ProductController(
             .map { product -> ProductResponse.from(product) }
 
         return ResponseEntity.ok(ApiResponse.success(responses))
+    }
+
+    @GetMapping("/api/v1/product/{productId}/item/{productItemId}")
+    fun hasEnoughStock(
+        @PathVariable productId: Long,
+        @PathVariable productItemId: Long,
+        @RequestParam stock: Int,
+    ): ResponseEntity<ApiResponse<Boolean>> {
+        return ResponseEntity.ok(ApiResponse.success(productService.isStockEnough(productId, productItemId, stock)))
     }
 }

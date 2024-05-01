@@ -34,6 +34,13 @@ class ProductService(
         )
     }
 
+    fun isStockEnough(productId: Long, itemId: Long, quantity: Int): Boolean {
+        val product = productRepository.findById(productId)
+            ?: throw ProductNotFoundException()
+
+        return product.hasAvailableStock(itemId, quantity)
+    }
+
     private fun toDetailImage(productImage: ProductImage): ProductDetail.DetailImage {
         return ProductDetail.DetailImage(
             url = productImage.url,
