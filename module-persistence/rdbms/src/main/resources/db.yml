@@ -9,27 +9,42 @@ spring:
 spring.config.activate.on-profile: local
 
 spring:
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 1
+
   jpa:
-    defer-datasource-initialization: true
-    ddl-auto: create
     properties:
       show_log: true
       format_sql: true
     show-sql: true
 
-  h2:
-    console:
-      enabled: true
-
 storage:
   datasource:
     core:
-      driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:core;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-      username: sa
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3307/core
+      username: root
+      password: secret
+      maximum-pool-size: 5
+      connection-timeout: 1100
+      keepalive-time: 30000
+      validation-timeout: 1000
+      max-lifetime: 600000
       pool-name: core-db-pool
       data-source-properties:
+        socketTimeout: 3000
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
         rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
 
 ---
 spring.config.activate.on-profile: dev

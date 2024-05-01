@@ -1,5 +1,4 @@
-spring.application.name: core-api
-
+---
 spring.profiles.active: local
 
 spring:
@@ -11,10 +10,8 @@ spring:
       - jwt.yml
 
   web.resources.add-mappings: false
-
----
-spring.config.activate.on-profile: local
-
+server:
+  port: 8087
 
 ---
 spring.config.activate.on-profile: local-dev

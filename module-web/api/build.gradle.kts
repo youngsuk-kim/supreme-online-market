@@ -22,6 +22,9 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
 
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-mysql")
+
     // Only for test
     testCompileOnly("jakarta.servlet:jakarta.servlet-api")
     testCompileOnly("org.springframework.boot:spring-boot-starter-test")

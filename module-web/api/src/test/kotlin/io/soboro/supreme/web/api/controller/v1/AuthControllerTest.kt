@@ -75,7 +75,7 @@ class AuthControllerTest : RestDocsTest() {
     @Test
     fun `user login api`() {
         every { jwtProcessor.generateToken(any(), any()) } returns "example-token"
-        every { authService.login(any(), any()) } just runs
+        every { authService.login(any(), any(), any()) } just runs
 
         given()
             .contentType(ContentType.JSON)

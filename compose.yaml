@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
 
-  # MySQL
-  mysql1:
+  # MySQL CORE
+  mysql_core:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_HOST: '%'
@@ -12,7 +12,20 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql1_data:/var/lib/mysql
+      - mysql_core_data:/var/lib/mysql
+    restart: always
+
+  # MySQL ORDER
+  mysql_order:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: core
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_order_data:/var/lib/mysql
     restart: always
 
   # Redis
@@ -41,6 +54,14 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
     depends_on:
       - zookeeper
+  smocker:
+    image: thiht/smocker
+    container_name: smocker
+    ports:
+      - "8090:8080" # Smocker Web UI
+      - "8091:8081" # Mocked HTTP API
+    volumes:
+      - ./mocks:/smocker # Mock 데이터를 위한 볼륨 마운트
 
   # haproxy
   haproxy:
@@ -62,7 +83,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=local
     depends_on:
-      - mysql1
+      - mysql_core
+      - mysql_order
     networks:
       - proxy
 
@@ -73,13 +95,15 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=local
     depends_on:
-      - mysql1
+      - mysql_core
+      - mysql_order
     networks:
       - proxy
 
 # Volume
 volumes:
-  mysql1_data:
+  mysql_core_data:
+  mysql_order_data:
 networks:
   proxy:
 

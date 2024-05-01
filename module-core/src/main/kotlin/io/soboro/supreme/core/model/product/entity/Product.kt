@@ -6,14 +6,21 @@ import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
+import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
 @Table(name = "products")
 class Product(
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY) var productItems: MutableList<ProductItem>,
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY) var images: List<ProductImage>,
+    @OneToMany(
+        cascade = [CascadeType.ALL],
+        fetch = FetchType.LAZY,
+    ) @JoinColumn(name = "product") var productItems: MutableList<ProductItem>,
+    @OneToMany(
+        cascade = [CascadeType.ALL],
+        fetch = FetchType.LAZY,
+    ) @JoinColumn(name = "product") var images: List<ProductImage>,
     @Column var productName: String,
     @Column var brandName: String,
     @Column var description: String,
