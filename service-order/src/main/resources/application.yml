@@ -25,4 +25,4 @@ spring:
       enable-auto-commit: false
 
 api:
-  base-url: http:localhost:8080
+  base-url: http:localhost:8089

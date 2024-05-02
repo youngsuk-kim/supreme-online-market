@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient.Builder
 @Configuration
 class WebClientConfig(
     @Value("\${api.base-url}")
-    private val baseUrl: String,
+    private val baseUrl: String = "http://127.0.0.1:8089",
 ) {
 
     @Bean

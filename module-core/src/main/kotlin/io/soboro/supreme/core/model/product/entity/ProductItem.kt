@@ -16,5 +16,5 @@ class ProductItem(
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "product_id") var product: Product,
 ) : BaseEntity() {
 
-    fun hasEnough(quantity: Int) = this.productUnit.stock > quantity
+    fun hasEnough(quantity: Long) = this.productUnit.stock > quantity
 }

@@ -17,7 +17,7 @@ class OrderService(
     private val orderItemRepository: OrderItemRepository,
     private val shipmentRepository: ShipmentRepository,
     private val authApi: AuthApi,
-    private val productApi: ProductApi
+    private val productApi: ProductApi,
 ) {
 
     @Transactional
@@ -26,7 +26,7 @@ class OrderService(
         authApi.isLogin(token)
 
         // 재고가 남았는지
-        productApi.isStockEnoughForSale()
+//        productApi.isStockEnoughForSale()
 
         // 주문 생성
         val order = Order.create(userId)

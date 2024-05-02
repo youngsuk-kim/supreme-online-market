@@ -8,6 +8,7 @@ import io.soboro.supreme.web.api.web.controller.v1.response.ProductResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
@@ -29,12 +30,12 @@ class ProductController(
         return ResponseEntity.ok(ApiResponse.success(responses))
     }
 
-    @GetMapping("/api/v1/product/{productId}/item/{productItemId}")
+    @PostMapping("/api/v1/products/{productId}/enough-stock")
     fun hasEnoughStock(
         @PathVariable productId: Long,
-        @PathVariable productItemId: Long,
-        @RequestParam stock: Int,
+        @RequestParam productItemId: Long,
+        @RequestParam quantity: Long,
     ): ResponseEntity<ApiResponse<Boolean>> {
-        return ResponseEntity.ok(ApiResponse.success(productService.isStockEnough(productId, productItemId, stock)))
+        return ResponseEntity.ok(ApiResponse.success(productService.isStockEnough(productId, productItemId, quantity)))
     }
 }

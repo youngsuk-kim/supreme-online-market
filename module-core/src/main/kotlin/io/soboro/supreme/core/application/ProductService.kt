@@ -20,6 +20,7 @@ class ProductService(
         return findAll
     }
 
+    @Transactional(readOnly = true)
     fun detail(productId: Long): ProductDetail {
         val product = productRepository.findById(productId)
             ?: throw ProductNotFoundException()
@@ -34,7 +35,8 @@ class ProductService(
         )
     }
 
-    fun isStockEnough(productId: Long, itemId: Long, quantity: Int): Boolean {
+    @Transactional(readOnly = true)
+    fun isStockEnough(productId: Long, itemId: Long, quantity: Long): Boolean {
         val product = productRepository.findById(productId)
             ?: throw ProductNotFoundException()
 

@@ -9,15 +9,16 @@ import org.junit.jupiter.api.TestInstance
 import org.mockserver.integration.ClientAndServer
 import org.mockserver.model.HttpRequest
 import org.mockserver.model.HttpResponse
+import org.mockserver.model.Parameter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@SpringBootTest(classes = [AuthClient::class, WebClientConfig::class])
-class AuthClientTest {
+@SpringBootTest(classes = [ProductClient::class, WebClientConfig::class])
+class ProductClientTest {
 
     @Autowired
-    private lateinit var authClient: AuthClient
+    private lateinit var productClient: ProductClient
     private lateinit var mockServer: ClientAndServer
 
     @BeforeAll
@@ -31,16 +32,16 @@ class AuthClientTest {
     }
 
     @Test
-    fun `check user session is valid`() {
+    fun `check enough stock`() {
         runBlocking {
             // given
-            val token = "example-token"
+            val productId = 1L
+            val productItemId = 1L
+            val quantity = 1L
 
             val responseBody = """
                     {
-                      "data": {
-                        "token": "$token"
-                      },
+                      "data": true
                     }
             """.trimIndent()
 
@@ -48,14 +49,19 @@ class AuthClientTest {
             mockServer.`when`(
                 HttpRequest.request()
                     .withMethod("POST")
-                    .withPath("/api/v1/auth/login/session"),
+                    .withPath("/api/v1/products/$productId/enough-stock")
+                    .withQueryStringParameters(
+                        Parameter("quantity", quantity.toString()),
+                        Parameter("productItemId", productItemId.toString()),
+                    ),
             ).respond(
                 HttpResponse.response()
                     .withBody(responseBody)
+                    .withHeader("Content-Type", "application/json")
                     .withStatusCode(200),
             )
 
-            val sut = authClient.isLogin(token)
+            val sut = productClient.isStockEnoughForSale(productId, productItemId, quantity)
 
             // then
             assertThat(sut).isTrue()

@@ -32,4 +32,6 @@ dependencies {
 
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-mysql")
+
+    testImplementation("org.mock-server:mockserver-netty:5.14.0")
 }

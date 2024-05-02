@@ -96,31 +96,4 @@ class AuthControllerTest : RestDocsTest() {
                 ),
             )
     }
-
-//    @Test
-//    fun examplePost() {
-//        every { exampleService.processExample(any()) } returns ExampleResult("BYE")
-//
-//        given()
-//            .contentType(ContentType.JSON)
-//            .body(ExampleRequestDto("HELLO_BODY"))
-//            .post("/post")
-//            .then()
-//            .status(HttpStatus.OK)
-//            .apply(
-//                document(
-//                    "examplePost",
-//                    requestPreprocessor(),
-//                    responsePreprocessor(),
-//                    requestFields(
-//                        fieldWithPath("data").type(JsonFieldType.STRING).description("ExampleBody Data Field"),
-//                    ),
-//                    responseFields(
-//                        fieldWithPath("result").type(JsonFieldType.STRING).description("ResultType"),
-//                        fieldWithPath("data.result").type(JsonFieldType.STRING).description("Result Date"),
-//                        fieldWithPath("error").type(JsonFieldType.STRING).ignored(),
-//                    ),
-//                ),
-//            )
-//    }
 }

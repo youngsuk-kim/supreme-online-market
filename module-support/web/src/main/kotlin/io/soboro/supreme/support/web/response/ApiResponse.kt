@@ -5,7 +5,7 @@ import io.soboro.supreme.web.api.support.error.ErrorType
 import io.soboro.supreme.web.api.support.response.ResultType
 
 data class ApiResponse<T> private constructor(
-    val result: ResultType,
+    val result: ResultType? = null,
     val data: T? = null,
     val error: ErrorMessage? = null,
 ) {

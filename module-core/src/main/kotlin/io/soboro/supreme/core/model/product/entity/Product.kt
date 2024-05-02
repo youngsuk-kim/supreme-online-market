@@ -28,9 +28,11 @@ class Product(
     @Column var price: Money,
 ) : BaseEntity() {
 
-    fun hasAvailableStock(itemId: Long, quantity: Int): Boolean {
-        val productItem = (this.productItems.find { item -> item.id == itemId }
-            ?: throw ProductNotFoundException())
+    fun hasAvailableStock(itemId: Long, quantity: Long): Boolean {
+        val productItem = (
+            this.productItems.find { item -> item.id == itemId }
+                ?: throw ProductNotFoundException()
+            )
 
         return productItem.hasEnough(quantity)
     }
