@@ -2,7 +2,7 @@ package io.soboro.supreme.web.api.web.controller.v1
 
 import io.soboro.supreme.core.application.AuthService
 import io.soboro.supreme.core.application.RegisterService
-import io.soboro.supreme.support.web.response.ApiResponse
+import io.soboro.supreme.web.api.support.response.ApiResponse
 import io.soboro.supreme.web.api.support.security.JwtProcessor
 import io.soboro.supreme.web.api.web.controller.v1.request.UserLoginRequest
 import io.soboro.supreme.web.api.web.controller.v1.request.UserRegisterRequest

@@ -8,7 +8,6 @@ tasks.getByName("jar") {
 
 dependencies {
 
-    implementation(project(":module-support:web"))
     implementation(project(":module-support:monitoring"))
     implementation(project(":module-support:logging"))
     implementation(project(":module-persistence:rdbms"))
@@ -24,6 +23,7 @@ dependencies {
 
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-mysql")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
     // Only for test
     testCompileOnly("jakarta.servlet:jakarta.servlet-api")

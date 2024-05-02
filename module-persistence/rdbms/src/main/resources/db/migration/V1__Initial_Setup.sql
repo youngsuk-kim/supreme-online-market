@@ -1,34 +1,3 @@
-CREATE TABLE order_item
-(
-    id          BIGINT PRIMARY KEY AUTO_INCREMENT,
-    `option`    TINYINT      NOT NULL CHECK (`option` BETWEEN 0 AND 0),
-    quantity    INT          NOT NULL,
-    created_at  TIMESTAMP(6),
-    updated_at  TIMESTAMP(6),
-    order_id    BIGINT,
-    option_name VARCHAR(255) NOT NULL,
-    sku         VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE orders
-(
-    id         BIGINT PRIMARY KEY AUTO_INCREMENT,
-    created_at TIMESTAMP(6),
-    updated_at TIMESTAMP(6),
-    user_id    BIGINT NOT NULL,
-    status     VARCHAR(255) CHECK (status IN ('ORDERED', 'PAYED', 'DELIVERED'))
-);
-
-CREATE TABLE payments
-(
-    id         BIGINT PRIMARY KEY AUTO_INCREMENT,
-    amount     DECIMAL(38, 2),
-    status     TINYINT CHECK (status BETWEEN 0 AND 1),
-    account_id BIGINT NOT NULL,
-    created_at TIMESTAMP(6),
-    updated_at TIMESTAMP(6)
-);
-
 CREATE TABLE product_image
 (
     id          BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -70,21 +39,6 @@ CREATE TABLE products
     brand_name   VARCHAR(255),
     description  VARCHAR(255),
     product_name VARCHAR(255)
-);
-
-CREATE TABLE shipment
-(
-    id                    BIGINT PRIMARY KEY AUTO_INCREMENT,
-    created_at            TIMESTAMP(6),
-    updated_at            TIMESTAMP(6),
-    order_id              BIGINT,
-    city                  VARCHAR(255),
-    detail                VARCHAR(255),
-    province              VARCHAR(255),
-    receiver_name         VARCHAR(255),
-    receiver_phone_number VARCHAR(255),
-    sender_name           VARCHAR(255),
-    sender_phone_number   VARCHAR(255)
 );
 
 CREATE TABLE users

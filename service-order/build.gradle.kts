@@ -7,7 +7,7 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":module-support:web"))
+    implementation(project(":module-support:logging"))
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
@@ -20,14 +20,13 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     implementation("io.asyncer:r2dbc-mysql:1.1.0")
-    implementation("io.r2dbc:r2dbc-pool:1.0.1.RELEASE")
+    runtimeOnly("com.mysql:mysql-connector-j")
 
     // kafka
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.apache.kafka:kafka-streams")
     testImplementation("org.springframework.kafka:spring-kafka-test")
 
-    // for exception of netty in os m2
     runtimeOnly("io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64")
 
     implementation("org.flywaydb:flyway-core")

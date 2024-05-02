@@ -1,5 +1,7 @@
 package io.soboro.supreme.order.clients
 
+import io.soboro.supreme.order.infrastructure.clients.ProductClient
+import io.soboro.supreme.order.infrastructure.clients.WebClientConfig
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll

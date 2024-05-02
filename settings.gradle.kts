@@ -11,7 +11,6 @@ include(
 
     "module-support:logging",
     "module-support:monitoring",
-    "module-support:web",
 )
 
 pluginManagement {

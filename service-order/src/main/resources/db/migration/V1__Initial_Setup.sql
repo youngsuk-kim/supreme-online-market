@@ -1,0 +1,41 @@
+CREATE TABLE orders
+(
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT      NOT NULL,
+    status     VARCHAR(20) NOT NULL DEFAULT 'ORDERED',
+    created_at TIMESTAMP            DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_item
+(
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    order_id    BIGINT       NOT NULL,
+    sku         BIGINT       NOT NULL,
+    quantity    BIGINT       NOT NULL,
+    option_name VARCHAR(255) NOT NULL,
+    `option`    JSON         NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders (id)
+);
+
+CREATE TABLE payments
+(
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    account_id  BIGINT         NOT NULL,
+    total_price DECIMAL(19, 4) NOT NULL,
+    status      VARCHAR(20)    NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE shipment
+(
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    order_id   BIGINT NOT NULL,
+    shipping   JSON   NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders (id)
+);

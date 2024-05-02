@@ -2,8 +2,19 @@ server:
   port: 8081
 
 spring:
+
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 1
+    enabled: true
+    url: jdbc:mysql://localhost:3306/orders
+    user: root
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/orders?zeroDateTimeBehavior=convertToNull
+    url: r2dbc:mysql://localhost:3306/orders
     username: root
     password: secret
     pool:
@@ -11,18 +22,16 @@ spring:
       max-size: 20
       initial-size: 5
       max-idle-time: 30m
-  sql:
-    init:
-      mode: always
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      enable-auto-commit: false
+
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    consumer:
+#      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      enable-auto-commit: false
 
 api:
-  base-url: http:localhost:8089
+  base-url: http:localhost:8087
