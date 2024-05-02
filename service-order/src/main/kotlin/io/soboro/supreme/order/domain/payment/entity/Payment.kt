@@ -1,7 +1,7 @@
 package io.soboro.supreme.order.domain.payment.entity
 
-import io.soboro.supreme.core.model.common.Money
 import io.soboro.supreme.order.domain.common.BaseEntity
+import io.soboro.supreme.order.domain.common.Money
 import io.soboro.supreme.order.domain.order.entity.Order
 import io.soboro.supreme.order.domain.payment.vo.PaymentStatus
 import org.springframework.data.annotation.Id

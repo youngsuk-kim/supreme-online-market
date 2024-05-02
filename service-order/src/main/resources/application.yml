@@ -35,3 +35,9 @@ spring:
 
 api:
   base-url: http:localhost:8087
+
+
+logging:
+  level:
+    io.r2dbc: DEBUG
+    org.springframework.r2dbc: DEBUG

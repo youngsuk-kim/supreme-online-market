@@ -1,6 +1,6 @@
 package io.soboro.supreme.order.infrastructure.r2dbc
 
 import io.soboro.supreme.order.domain.shipment.entity.Shipment
-import org.springframework.data.r2dbc.repository.R2dbcRepository
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface ShipmentR2dbcRepository : R2dbcRepository<Shipment, Long>
+interface ShipmentR2dbcRepository : CoroutineCrudRepository<Shipment, Long>

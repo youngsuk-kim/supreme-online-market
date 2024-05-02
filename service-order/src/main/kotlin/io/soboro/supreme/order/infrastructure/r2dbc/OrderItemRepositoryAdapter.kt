@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 class OrderItemRepositoryAdapter(
     private val orderItemR2dbcRepository: OrderItemR2dbcRepository,
 ) : OrderItemRepository {
-    override fun saveAll(items: List<OrderItem>) {
-        orderItemR2dbcRepository.saveAll(items)
+    override suspend fun save(item: OrderItem) {
+        orderItemR2dbcRepository.save(item)
     }
 }

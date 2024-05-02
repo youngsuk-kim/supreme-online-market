@@ -8,6 +8,8 @@ import io.soboro.supreme.order.domain.order.vo.OrderUnit
 import io.soboro.supreme.order.domain.shipment.entity.Shipment
 import io.soboro.supreme.order.domain.shipment.repository.ShipmentRepository
 import io.soboro.supreme.order.domain.shipment.vo.Shipping
+import io.soboro.supreme.order.presentation.rest.error.ApiException
+import io.soboro.supreme.order.presentation.rest.error.ErrorType
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -22,46 +24,36 @@ class OrderService(
 
     @Transactional
     suspend fun place(token: String, userId: Long, orderUnits: List<OrderUnit>, shipping: Shipping) {
-        // 로그인이 된 유저인지
+        // 로그인 확인
         val isLogin = authApi.isLogin(token)
+        if (!isLogin) throw ApiException(ErrorType.AUTEHNTICATION_ERROR, "Token is invalid")
 
-        if (!isLogin) throw IllegalArgumentException("Token is invalid")
-
-        // 재고가 남았는지
-        val noStock = orderUnits.none { orderUnit ->
-            productApi.isStockEnoughForSale(
-                orderUnit.productId,
-                orderUnit.sku,
-                orderUnit.stock,
-            )
+        // 재고 확인
+        val noStock = orderUnits.any { orderUnit ->
+            !productApi.isStockEnoughForSale(orderUnit.productId, orderUnit.sku, orderUnit.stock)
         }
-        if (noStock) throw IllegalStateException("No stock available for $userId")
+        if (noStock) throw ApiException(ErrorType.INVALID_ARG_ERROR, "No stock available for $userId")
 
-        // 주문 생성
+        // 주문 생성 및 저장
         val order = Order.create(userId)
         orderRepository.save(order)
 
-        // 주문 상품 생성
-        val orderItems = orderUnits.map { toOrderItem(it, order) }
-        orderItemRepository.saveAll(orderItems)
+        // 주문 상품 생성 및 저장
+        orderUnits.map { toOrderItem(it, order.id!!) }
+            .forEach { orderItemRepository.save(it) }
 
-        // 배송 생성
-        val shipment = Shipment(
-            order = order,
-            shipping = shipping,
-        )
-
-        // 배송 저장
+        // 배송 생성 및 저장
+        val shipment = Shipment.create(orderId = order.id!!, shipping = shipping)
         shipmentRepository.save(shipment)
     }
 
-    private fun toOrderItem(orderUnit: OrderUnit, order: Order): OrderItem {
+    private fun toOrderItem(orderUnit: OrderUnit, orderId: Long): OrderItem {
         return OrderItem(
-            order = order,
+            orderId = orderId,
             sku = orderUnit.sku,
             quantity = orderUnit.stock,
-            optionName = orderUnit.optionName,
-            option = orderUnit.option,
+            optionValue = orderUnit.optionName,
+            optionKey = orderUnit.option.name,
         )
     }
 }

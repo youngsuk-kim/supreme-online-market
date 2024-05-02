@@ -10,13 +10,13 @@ import org.springframework.data.relational.core.mapping.Table
 class Order(
     @Id var id: Long? = null,
     @Column val userId: Long,
-    @Column var status: OrderStatus = OrderStatus.ORDERED,
+    @Column var status: OrderStatus = OrderStatus.PLACED,
 ) : BaseEntity() {
     companion object {
         fun create(userId: Long): Order {
             return Order(
                 userId = userId,
-                status = OrderStatus.ORDERED,
+                status = OrderStatus.PLACED,
             )
         }
     }

@@ -1,15 +1,16 @@
 package io.soboro.supreme.order.domain.order.entity
 
-import io.soboro.supreme.core.model.common.BaseEntity
-import io.soboro.supreme.order.domain.order.vo.Option
+import io.soboro.supreme.order.domain.common.BaseEntity
+import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
 @Table(name = "order_item")
 class OrderItem(
-    @Column val order: Order,
+    @Id var id: Long? = null,
     @Column var sku: Long,
+    @Column val orderId: Long,
     @Column var quantity: Long,
-    @Column var optionName: String,
-    @Column var option: Option,
+    @Column var optionValue: String,
+    @Column var optionKey: String,
 ) : BaseEntity()
