@@ -23,10 +23,9 @@ class OrderService(
 ) {
 
     @Transactional
-    suspend fun place(token: String, userId: Long, orderUnits: List<OrderUnit>, shipping: Shipping) {
-        // 로그인 확인
-        val isLogin = authApi.isLogin(token)
-        if (!isLogin) throw ApiException(ErrorType.AUTEHNTICATION_ERROR, "Token is invalid")
+    suspend fun place(token: String, orderUnits: List<OrderUnit>, shipping: Shipping) {
+        // 유저 아이디 가져오기
+        val userId = authApi.getUserId(token).toLong()
 
         // 재고 확인
         val noStock = orderUnits.any { orderUnit ->

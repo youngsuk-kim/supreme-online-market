@@ -27,6 +27,7 @@ class SecurityConfiguration(
             "/health",
             "/api/v1/auth/register",
             "/api/v1/auth/login/**",
+            "/api/v1/auth/users/**",
             "/api/v1/products/**",
             "/api/v1/carts/**",
             "/api/v1/orders/**",

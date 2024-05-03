@@ -57,7 +57,7 @@ class AuthClientTest {
                     .withStatusCode(200),
             )
 
-            val sut = authClient.isLogin(token)
+            val sut = authClient.getUserId(token)
 
             // then
             assertThat(sut).isTrue()

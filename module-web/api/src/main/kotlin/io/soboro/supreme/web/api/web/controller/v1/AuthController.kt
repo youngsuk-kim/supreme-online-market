@@ -7,11 +7,11 @@ import io.soboro.supreme.web.api.support.security.JwtProcessor
 import io.soboro.supreme.web.api.web.controller.v1.request.UserLoginRequest
 import io.soboro.supreme.web.api.web.controller.v1.request.UserRegisterRequest
 import io.soboro.supreme.web.api.web.controller.v1.response.UserLoginResponse
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestHeader
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -38,9 +38,8 @@ class AuthController(
         return ResponseEntity.ok(ApiResponse.success(UserLoginResponse(token)))
     }
 
-    @PostMapping("/api/v1/auth/login/session")
-    fun hasSession(@RequestHeader("Authorization") token: String): ResponseEntity<ApiResponse<Unit>> {
-        if (!jwtProcessor.isOk(token)) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
-        return ResponseEntity.ok().build()
+    @GetMapping("/api/v1/auth/users")
+    fun getByToken(@RequestParam token: String): ResponseEntity<ApiResponse<Long?>> {
+        return ResponseEntity.ok(ApiResponse.success(authService.getUserFromToken(token).id))
     }
 }
